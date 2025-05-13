@@ -6,14 +6,24 @@ namespace GameOfPirates
         public Form1()
         {
             InitializeComponent();
+            RandomOrFromFile.Init("C:\\Users\\Admin\\Downloads\\GameOfPirates-develop\\GameOfPirates\\RAND_NUM.txt", true);
         }
 
         private void button_next_Click(object sender, EventArgs e)
         {
+            if (checkBox_rand_num.Checked)
+            {
+                RandomOrFromFile.Instance.CzyZpliku(true);
+            }
+
+            else
+            {
+                RandomOrFromFile.Instance.CzyZpliku(false);
+            }
+
             if (checkBox_debug_mode.Checked)
             {
                 MessageBox.Show("Tryb debugowania", "Informacja");
-                
                 Gra = new Gra();
                 Gra.LadujDaneDebugowania(int.Parse(textbox_num_of_boats_k.Text));
                 Print.czyscPlik();

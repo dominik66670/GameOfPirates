@@ -107,7 +107,7 @@
             label9 = new Label();
             label8 = new Label();
             panel_debug_mode = new Panel();
-            checkBox_boats_num = new CheckBox();
+            checkBox_rand_num = new CheckBox();
             checkBox_boats_profiles = new CheckBox();
             checkBox_hier_in_boats = new CheckBox();
             checkBox_all_players_global_id = new CheckBox();
@@ -1050,7 +1050,7 @@
             // panel_debug_mode
             // 
             panel_debug_mode.BorderStyle = BorderStyle.FixedSingle;
-            panel_debug_mode.Controls.Add(checkBox_boats_num);
+            panel_debug_mode.Controls.Add(checkBox_rand_num);
             panel_debug_mode.Controls.Add(checkBox_boats_profiles);
             panel_debug_mode.Controls.Add(checkBox_hier_in_boats);
             panel_debug_mode.Controls.Add(checkBox_all_players_global_id);
@@ -1059,17 +1059,17 @@
             panel_debug_mode.Size = new Size(261, 100);
             panel_debug_mode.TabIndex = 7;
             // 
-            // checkBox_boats_num
+            // checkBox_rand_num
             // 
-            checkBox_boats_num.AutoSize = true;
-            checkBox_boats_num.Checked = true;
-            checkBox_boats_num.CheckState = CheckState.Checked;
-            checkBox_boats_num.Location = new Point(5, 76);
-            checkBox_boats_num.Name = "checkBox_boats_num";
-            checkBox_boats_num.Size = new Size(83, 19);
-            checkBox_boats_num.TabIndex = 3;
-            checkBox_boats_num.Text = "Rand_num";
-            checkBox_boats_num.UseVisualStyleBackColor = true;
+            checkBox_rand_num.AutoSize = true;
+            checkBox_rand_num.Checked = true;
+            checkBox_rand_num.CheckState = CheckState.Checked;
+            checkBox_rand_num.Location = new Point(5, 76);
+            checkBox_rand_num.Name = "checkBox_rand_num";
+            checkBox_rand_num.Size = new Size(83, 19);
+            checkBox_rand_num.TabIndex = 3;
+            checkBox_rand_num.Text = "Rand_num";
+            checkBox_rand_num.UseVisualStyleBackColor = true;
             // 
             // checkBox_boats_profiles
             // 
@@ -1764,7 +1764,7 @@
         private Panel panel_debug_mode;
         private CheckBox checkBox_all_players_global_id;
         private CheckBox checkBox_debug_mode;
-        private CheckBox checkBox_boats_num;
+        private CheckBox checkBox_rand_num;
         private CheckBox checkBox_boats_profiles;
         private CheckBox checkBox_hier_in_boats;
         private Panel panel_survive_parameters;

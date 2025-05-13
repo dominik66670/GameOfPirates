@@ -42,8 +42,7 @@ namespace GameOfPirates
             this.Profil=new int[3];
             for (int i = 0; i < 3; i++)
             {
-                Random random = new Random();
-                int wylosowanaLiczba = random.Next(2);
+                int wylosowanaLiczba = RandomOrFromFile.Instance.Next(0,2);
                 this.Profil[i] = wylosowanaLiczba;
             }
         }

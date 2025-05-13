@@ -17,11 +17,10 @@ namespace GameOfPirates
             for (int i = 0; i < n; i++)
                 numbers[i] = i + 1;
 
-            Random rng = new Random();
 
             for (int i = n - 1; i > 0; i--)
             {
-                int j = rng.Next(i + 1);
+                int j = RandomOrFromFile.Instance.Next(0,i + 1);
                 int temp = numbers[i];
                 numbers[i] = numbers[j];
                 numbers[j] = temp;
