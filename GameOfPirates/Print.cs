@@ -12,11 +12,68 @@ namespace GameOfPirates
         public static void print1(Gra gra) 
         {
             Console.WriteLine("Single_boat");
+
+            string sciezkaDoPliku = "debug.txt";
+
+            try
+            {
+                File.AppendAllText(sciezkaDoPliku, "Single_boat" + Environment.NewLine);
+                int licznik = 0;
+                foreach (Lodka lodka in gra.Lodki)
+                {
+                    string hierarchia = "";
+                    foreach (Pirat pirat in lodka.Piraci)
+                    {
+                        hierarchia = hierarchia + pirat.Identyfikator_globalny +" ";
+                        licznik++;
+                        if (licznik % 3 == 0) 
+                        { 
+                        hierarchia=hierarchia+Environment.NewLine;
+                        }
+                    }
+                    hierarchia = hierarchia + Environment.NewLine;
+                    File.AppendAllText(sciezkaDoPliku, hierarchia);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+            }
+
+
         }
 
         public static void print2(Gra gra)
         {
             Console.WriteLine("Boats_and_H");
+
+            string sciezkaDoPliku = "debug.txt";
+
+            try
+            {
+                File.AppendAllText(sciezkaDoPliku, "Boats_and_H" + Environment.NewLine);
+                int licznik = 0;
+                foreach (Lodka lodka in gra.Lodki)
+                {
+                    string hierarchia = "";
+                    foreach (Pirat pirat in lodka.Piraci)
+                    {
+                        hierarchia = hierarchia + pirat.Hierarchia_w_lodce + " ";
+                        licznik++;
+                        if (licznik % 3 == 0)
+                        {
+                            hierarchia = hierarchia + Environment.NewLine;
+                        }
+                    }
+                    hierarchia = hierarchia + Environment.NewLine;
+                    File.AppendAllText(sciezkaDoPliku, hierarchia);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+            }
+
         }
 
         public static void print3(Gra gra)

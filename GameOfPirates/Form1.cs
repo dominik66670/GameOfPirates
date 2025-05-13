@@ -17,6 +17,8 @@ namespace GameOfPirates
                 Gra = new Gra();
                 Gra.LadujDaneDebugowania(int.Parse(textbox_num_of_boats_k.Text));
                 Print.czyscPlik();
+                Print.print1(Gra);
+                Print.print2(Gra);
                 Print.print3(Gra);
                 Print.print11(Gra);
                 Print.print12(Gra);
@@ -29,6 +31,8 @@ namespace GameOfPirates
                 Gra = new Gra();
                 Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
                 Print.czyscPlik();
+                Print.print1(Gra);
+                Print.print2(Gra);
                 Print.print3(Gra);
                 Print.print11(Gra);
                 Print.print12(Gra);
