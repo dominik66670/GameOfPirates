@@ -13,11 +13,11 @@ namespace GameOfPirates
         public ArrayList Lodki { get; set; }
 
 
-        public void InicjujDane()
+        public void InicjujDane(int ilelodek)
         {
         int igp = 0;  
         Lodki = new ArrayList();
-        for(int i = 0; i < 10; i++) 
+        for(int i = 0; i < ilelodek; i++) 
             { 
                 Lodka lodka = new Lodka();
                 lodka.Identyfikator_Globalny = i;
@@ -29,7 +29,7 @@ namespace GameOfPirates
             }
         }
 
-        public void LadujDaneDebugowania()
+        public void LadujDaneDebugowania(int ilelodek)
         {
             int[,] All_players_glob_ID = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("C:\\Users\\Admin\\Downloads\\GameOfPirates-develop\\GameOfPirates\\All_players_glob_ID-12boat.txt");
             int[,] Boats_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("C:\\Users\\Admin\\Downloads\\GameOfPirates-develop\\GameOfPirates\\Boats_profiles-12boat.txt");
@@ -37,6 +37,10 @@ namespace GameOfPirates
             Lodki=new ArrayList();
             for (int i = 0;i<Boats_profiles.GetLength(0);i++) 
             {
+                if (i == ilelodek)
+                { 
+                    break;
+                }
             Lodka lodka = new Lodka();
                 int liczbaKolumn = Boats_profiles.GetLength(1);
                 int[] wiersz1D = new int[liczbaKolumn];
