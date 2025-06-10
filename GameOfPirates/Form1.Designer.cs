@@ -144,7 +144,6 @@
             label_1 = new Label();
             label_competition_type = new Label();
             panel_competition_type = new Panel();
-            radioButton_competition_type_invasion = new RadioButton();
             radioButton_competition_type_roulette = new RadioButton();
             radioButton_competition_name_tournament = new RadioButton();
             label_boat_players_profiles = new Label();
@@ -166,6 +165,19 @@
             label_numOfBoats_k = new Label();
             label_network_of_boats = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            radioButton1 = new RadioButton();
+            textBox1 = new TextBox();
+            radioButton2 = new RadioButton();
+            radioButton3 = new RadioButton();
+            radioButton4 = new RadioButton();
+            radioButton5 = new RadioButton();
+            panel2 = new Panel();
+            radioButton6 = new RadioButton();
+            radioButton7 = new RadioButton();
+            radioButton8 = new RadioButton();
+            radioButton9 = new RadioButton();
+            radioButton10 = new RadioButton();
+            radioButton11 = new RadioButton();
             panel_first_page.SuspendLayout();
             panel1.SuspendLayout();
             panel_offer_type.SuspendLayout();
@@ -179,10 +191,14 @@
             panel_competition_type.SuspendLayout();
             panel_max_num_of_games.SuspendLayout();
             panel_Network_of_boats.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel_first_page
             // 
+            panel_first_page.Controls.Add(panel2);
+            panel_first_page.Controls.Add(textBox1);
+            panel_first_page.Controls.Add(radioButton1);
             panel_first_page.Controls.Add(label13);
             panel_first_page.Controls.Add(panel1);
             panel_first_page.Controls.Add(label_offer_type);
@@ -209,13 +225,13 @@
             panel_first_page.Controls.Add(label_network_of_boats);
             panel_first_page.Location = new Point(12, 12);
             panel_first_page.Name = "panel_first_page";
-            panel_first_page.Size = new Size(1056, 851);
+            panel_first_page.Size = new Size(1433, 851);
             panel_first_page.TabIndex = 0;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(283, 220);
+            label13.Location = new Point(675, 249);
             label13.Name = "label13";
             label13.Size = new Size(96, 15);
             label13.TabIndex = 20;
@@ -262,15 +278,15 @@
             panel1.Controls.Add(radioButton_V10);
             panel1.Controls.Add(radioButton__V01);
             panel1.Controls.Add(radioButton_V00);
-            panel1.Location = new Point(283, 238);
+            panel1.Location = new Point(647, 269);
             panel1.Name = "panel1";
-            panel1.Size = new Size(770, 554);
+            panel1.Size = new Size(770, 552);
             panel1.TabIndex = 21;
             // 
             // radioButton_V342
             // 
             radioButton_V342.AutoSize = true;
-            radioButton_V342.Location = new Point(432, 361);
+            radioButton_V342.Location = new Point(432, 477);
             radioButton_V342.Name = "radioButton_V342";
             radioButton_V342.Size = new Size(65, 19);
             radioButton_V342.TabIndex = 55;
@@ -281,7 +297,7 @@
             // radioButton_V332
             // 
             radioButton_V332.AutoSize = true;
-            radioButton_V332.Location = new Point(432, 332);
+            radioButton_V332.Location = new Point(432, 448);
             radioButton_V332.Name = "radioButton_V332";
             radioButton_V332.Size = new Size(65, 19);
             radioButton_V332.TabIndex = 54;
@@ -292,7 +308,7 @@
             // radioButton_V322
             // 
             radioButton_V322.AutoSize = true;
-            radioButton_V322.Location = new Point(432, 303);
+            radioButton_V322.Location = new Point(432, 419);
             radioButton_V322.Name = "radioButton_V322";
             radioButton_V322.Size = new Size(65, 19);
             radioButton_V322.TabIndex = 53;
@@ -303,7 +319,7 @@
             // radioButton_V341
             // 
             radioButton_V341.AutoSize = true;
-            radioButton_V341.Location = new Point(343, 361);
+            radioButton_V341.Location = new Point(343, 477);
             radioButton_V341.Name = "radioButton_V341";
             radioButton_V341.Size = new Size(83, 19);
             radioButton_V341.TabIndex = 52;
@@ -314,7 +330,7 @@
             // radioButton_V331
             // 
             radioButton_V331.AutoSize = true;
-            radioButton_V331.Location = new Point(343, 332);
+            radioButton_V331.Location = new Point(343, 448);
             radioButton_V331.Name = "radioButton_V331";
             radioButton_V331.Size = new Size(83, 19);
             radioButton_V331.TabIndex = 51;
@@ -325,7 +341,7 @@
             // radioButton_V321
             // 
             radioButton_V321.AutoSize = true;
-            radioButton_V321.Location = new Point(343, 303);
+            radioButton_V321.Location = new Point(343, 419);
             radioButton_V321.Name = "radioButton_V321";
             radioButton_V321.Size = new Size(83, 19);
             radioButton_V321.TabIndex = 50;
@@ -336,7 +352,7 @@
             // radioButton_V340
             // 
             radioButton_V340.AutoSize = true;
-            radioButton_V340.Location = new Point(270, 361);
+            radioButton_V340.Location = new Point(270, 477);
             radioButton_V340.Name = "radioButton_V340";
             radioButton_V340.Size = new Size(67, 19);
             radioButton_V340.TabIndex = 49;
@@ -347,7 +363,7 @@
             // radioButton_V330
             // 
             radioButton_V330.AutoSize = true;
-            radioButton_V330.Location = new Point(270, 332);
+            radioButton_V330.Location = new Point(270, 448);
             radioButton_V330.Name = "radioButton_V330";
             radioButton_V330.Size = new Size(67, 19);
             radioButton_V330.TabIndex = 48;
@@ -358,7 +374,7 @@
             // radioButton_V320
             // 
             radioButton_V320.AutoSize = true;
-            radioButton_V320.Location = new Point(270, 303);
+            radioButton_V320.Location = new Point(270, 419);
             radioButton_V320.Name = "radioButton_V320";
             radioButton_V320.Size = new Size(67, 19);
             radioButton_V320.TabIndex = 47;
@@ -369,7 +385,7 @@
             // textBox_V34_max_k
             // 
             textBox_V34_max_k.BorderStyle = BorderStyle.FixedSingle;
-            textBox_V34_max_k.Location = new Point(215, 362);
+            textBox_V34_max_k.Location = new Point(215, 478);
             textBox_V34_max_k.Name = "textBox_V34_max_k";
             textBox_V34_max_k.Size = new Size(38, 23);
             textBox_V34_max_k.TabIndex = 46;
@@ -379,7 +395,7 @@
             // textBox_V33_max_k
             // 
             textBox_V33_max_k.BorderStyle = BorderStyle.FixedSingle;
-            textBox_V33_max_k.Location = new Point(215, 333);
+            textBox_V33_max_k.Location = new Point(215, 449);
             textBox_V33_max_k.Name = "textBox_V33_max_k";
             textBox_V33_max_k.Size = new Size(38, 23);
             textBox_V33_max_k.TabIndex = 45;
@@ -389,7 +405,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(215, 286);
+            label18.Location = new Point(215, 402);
             label18.Name = "label18";
             label18.Size = new Size(39, 15);
             label18.TabIndex = 44;
@@ -398,7 +414,7 @@
             // textBox_V32_max_k
             // 
             textBox_V32_max_k.BorderStyle = BorderStyle.FixedSingle;
-            textBox_V32_max_k.Location = new Point(215, 304);
+            textBox_V32_max_k.Location = new Point(215, 420);
             textBox_V32_max_k.Name = "textBox_V32_max_k";
             textBox_V32_max_k.Size = new Size(38, 23);
             textBox_V32_max_k.TabIndex = 43;
@@ -408,7 +424,7 @@
             // textBox_V34_min_k
             // 
             textBox_V34_min_k.BorderStyle = BorderStyle.FixedSingle;
-            textBox_V34_min_k.Location = new Point(162, 361);
+            textBox_V34_min_k.Location = new Point(162, 477);
             textBox_V34_min_k.Name = "textBox_V34_min_k";
             textBox_V34_min_k.Size = new Size(37, 23);
             textBox_V34_min_k.TabIndex = 42;
@@ -418,7 +434,7 @@
             // textBox_V33_min_k
             // 
             textBox_V33_min_k.BorderStyle = BorderStyle.FixedSingle;
-            textBox_V33_min_k.Location = new Point(162, 332);
+            textBox_V33_min_k.Location = new Point(162, 448);
             textBox_V33_min_k.Name = "textBox_V33_min_k";
             textBox_V33_min_k.Size = new Size(37, 23);
             textBox_V33_min_k.TabIndex = 41;
@@ -428,7 +444,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(162, 285);
+            label17.Location = new Point(162, 401);
             label17.Name = "label17";
             label17.Size = new Size(37, 15);
             label17.TabIndex = 40;
@@ -437,7 +453,7 @@
             // textBox_V32_min_k
             // 
             textBox_V32_min_k.BorderStyle = BorderStyle.FixedSingle;
-            textBox_V32_min_k.Location = new Point(162, 303);
+            textBox_V32_min_k.Location = new Point(162, 419);
             textBox_V32_min_k.Name = "textBox_V32_min_k";
             textBox_V32_min_k.Size = new Size(37, 23);
             textBox_V32_min_k.TabIndex = 39;
@@ -447,7 +463,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(321, 17);
+            label16.Location = new Point(321, 153);
             label16.Name = "label16";
             label16.Size = new Size(96, 15);
             label16.TabIndex = 38;
@@ -456,7 +472,7 @@
             // textBox_swiching_v_prob
             // 
             textBox_swiching_v_prob.BorderStyle = BorderStyle.FixedSingle;
-            textBox_swiching_v_prob.Location = new Point(338, 35);
+            textBox_swiching_v_prob.Location = new Point(338, 171);
             textBox_swiching_v_prob.Name = "textBox_swiching_v_prob";
             textBox_swiching_v_prob.Size = new Size(66, 23);
             textBox_swiching_v_prob.TabIndex = 37;
@@ -465,7 +481,7 @@
             // radioButton_V40
             // 
             radioButton_V40.AutoSize = true;
-            radioButton_V40.Location = new Point(15, 400);
+            radioButton_V40.Location = new Point(15, 516);
             radioButton_V40.Name = "radioButton_V40";
             radioButton_V40.Size = new Size(163, 19);
             radioButton_V40.TabIndex = 36;
@@ -476,7 +492,7 @@
             // radioButton_V35
             // 
             radioButton_V35.AutoSize = true;
-            radioButton_V35.Location = new Point(15, 361);
+            radioButton_V35.Location = new Point(15, 477);
             radioButton_V35.Name = "radioButton_V35";
             radioButton_V35.Size = new Size(69, 19);
             radioButton_V35.TabIndex = 35;
@@ -487,7 +503,7 @@
             // radioButton_V33
             // 
             radioButton_V33.AutoSize = true;
-            radioButton_V33.Location = new Point(15, 332);
+            radioButton_V33.Location = new Point(15, 448);
             radioButton_V33.Name = "radioButton_V33";
             radioButton_V33.Size = new Size(61, 19);
             radioButton_V33.TabIndex = 34;
@@ -498,7 +514,7 @@
             // radioButton_V32
             // 
             radioButton_V32.AutoSize = true;
-            radioButton_V32.Location = new Point(15, 303);
+            radioButton_V32.Location = new Point(15, 419);
             radioButton_V32.Name = "radioButton_V32";
             radioButton_V32.Size = new Size(61, 19);
             radioButton_V32.TabIndex = 33;
@@ -509,7 +525,7 @@
             // radioButton_V31
             // 
             radioButton_V31.AutoSize = true;
-            radioButton_V31.Location = new Point(15, 274);
+            radioButton_V31.Location = new Point(15, 390);
             radioButton_V31.Name = "radioButton_V31";
             radioButton_V31.Size = new Size(67, 19);
             radioButton_V31.TabIndex = 32;
@@ -520,7 +536,7 @@
             // radioButton_V30
             // 
             radioButton_V30.AutoSize = true;
-            radioButton_V30.Location = new Point(15, 245);
+            radioButton_V30.Location = new Point(15, 361);
             radioButton_V30.Name = "radioButton_V30";
             radioButton_V30.Size = new Size(67, 19);
             radioButton_V30.TabIndex = 31;
@@ -531,7 +547,7 @@
             // textBox_kDC
             // 
             textBox_kDC.BorderStyle = BorderStyle.FixedSingle;
-            textBox_kDC.Location = new Point(111, 361);
+            textBox_kDC.Location = new Point(111, 477);
             textBox_kDC.Name = "textBox_kDC";
             textBox_kDC.Size = new Size(32, 23);
             textBox_kDC.TabIndex = 30;
@@ -541,7 +557,7 @@
             // textBox_kC
             // 
             textBox_kC.BorderStyle = BorderStyle.FixedSingle;
-            textBox_kC.Location = new Point(111, 332);
+            textBox_kC.Location = new Point(111, 448);
             textBox_kC.Name = "textBox_kC";
             textBox_kC.Size = new Size(32, 23);
             textBox_kC.TabIndex = 29;
@@ -551,7 +567,7 @@
             // textBox_kD
             // 
             textBox_kD.BorderStyle = BorderStyle.FixedSingle;
-            textBox_kD.Location = new Point(111, 303);
+            textBox_kD.Location = new Point(111, 419);
             textBox_kD.Name = "textBox_kD";
             textBox_kD.Size = new Size(32, 23);
             textBox_kD.TabIndex = 28;
@@ -561,7 +577,7 @@
             // textBox_allD
             // 
             textBox_allD.BorderStyle = BorderStyle.FixedSingle;
-            textBox_allD.Location = new Point(111, 274);
+            textBox_allD.Location = new Point(111, 390);
             textBox_allD.Name = "textBox_allD";
             textBox_allD.Size = new Size(32, 23);
             textBox_allD.TabIndex = 27;
@@ -571,7 +587,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(92, 227);
+            label15.Location = new Point(92, 343);
             label15.Name = "label15";
             label15.Size = new Size(69, 15);
             label15.TabIndex = 26;
@@ -580,7 +596,7 @@
             // textBox_allC
             // 
             textBox_allC.BorderStyle = BorderStyle.FixedSingle;
-            textBox_allC.Location = new Point(111, 245);
+            textBox_allC.Location = new Point(111, 361);
             textBox_allC.Name = "textBox_allC";
             textBox_allC.Size = new Size(32, 23);
             textBox_allC.TabIndex = 25;
@@ -590,7 +606,7 @@
             // radioButton_V22
             // 
             radioButton_V22.AutoSize = true;
-            radioButton_V22.Location = new Point(15, 193);
+            radioButton_V22.Location = new Point(15, 309);
             radioButton_V22.Name = "radioButton_V22";
             radioButton_V22.Size = new Size(96, 19);
             radioButton_V22.TabIndex = 6;
@@ -601,7 +617,7 @@
             // radioButton_V21
             // 
             radioButton_V21.AutoSize = true;
-            radioButton_V21.Location = new Point(15, 168);
+            radioButton_V21.Location = new Point(15, 284);
             radioButton_V21.Name = "radioButton_V21";
             radioButton_V21.Size = new Size(96, 19);
             radioButton_V21.TabIndex = 5;
@@ -612,7 +628,7 @@
             // radioButton_V20
             // 
             radioButton_V20.AutoSize = true;
-            radioButton_V20.Location = new Point(15, 143);
+            radioButton_V20.Location = new Point(15, 259);
             radioButton_V20.Name = "radioButton_V20";
             radioButton_V20.Size = new Size(132, 19);
             radioButton_V20.TabIndex = 4;
@@ -623,7 +639,7 @@
             // radioButton_V11
             // 
             radioButton_V11.AutoSize = true;
-            radioButton_V11.Location = new Point(15, 101);
+            radioButton_V11.Location = new Point(15, 237);
             radioButton_V11.Name = "radioButton_V11";
             radioButton_V11.Size = new Size(128, 19);
             radioButton_V11.TabIndex = 3;
@@ -634,7 +650,7 @@
             // radioButton_V10
             // 
             radioButton_V10.AutoSize = true;
-            radioButton_V10.Location = new Point(15, 76);
+            radioButton_V10.Location = new Point(15, 212);
             radioButton_V10.Name = "radioButton_V10";
             radioButton_V10.Size = new Size(130, 19);
             radioButton_V10.TabIndex = 2;
@@ -645,7 +661,7 @@
             // radioButton__V01
             // 
             radioButton__V01.AutoSize = true;
-            radioButton__V01.Location = new Point(15, 35);
+            radioButton__V01.Location = new Point(15, 171);
             radioButton__V01.Name = "radioButton__V01";
             radioButton__V01.Size = new Size(152, 19);
             radioButton__V01.TabIndex = 1;
@@ -657,7 +673,7 @@
             // 
             radioButton_V00.AutoSize = true;
             radioButton_V00.Checked = true;
-            radioButton_V00.Location = new Point(15, 10);
+            radioButton_V00.Location = new Point(15, 146);
             radioButton_V00.Name = "radioButton_V00";
             radioButton_V00.Size = new Size(116, 19);
             radioButton_V00.TabIndex = 0;
@@ -677,13 +693,15 @@
             // panel_offer_type
             // 
             panel_offer_type.BorderStyle = BorderStyle.FixedSingle;
+            panel_offer_type.Controls.Add(radioButton5);
+            panel_offer_type.Controls.Add(radioButton4);
             panel_offer_type.Controls.Add(radioButton_OFF_3);
             panel_offer_type.Controls.Add(radioButton_OFF_2);
             panel_offer_type.Controls.Add(radioButton_OFF_1);
             panel_offer_type.Controls.Add(radioButton_OFF_0);
             panel_offer_type.Location = new Point(283, 174);
             panel_offer_type.Name = "panel_offer_type";
-            panel_offer_type.Size = new Size(254, 43);
+            panel_offer_type.Size = new Size(365, 43);
             panel_offer_type.TabIndex = 19;
             // 
             // radioButton_OFF_3
@@ -743,46 +761,47 @@
             // panel_win_aspiration_level
             // 
             panel_win_aspiration_level.BorderStyle = BorderStyle.FixedSingle;
+            panel_win_aspiration_level.Controls.Add(radioButton3);
             panel_win_aspiration_level.Controls.Add(radioButton_WASP_3);
             panel_win_aspiration_level.Controls.Add(radioButton_WASP_2);
             panel_win_aspiration_level.Controls.Add(radioButton_WASP_1);
             panel_win_aspiration_level.Controls.Add(radioButton_WASP_0);
             panel_win_aspiration_level.Location = new Point(283, 89);
             panel_win_aspiration_level.Name = "panel_win_aspiration_level";
-            panel_win_aspiration_level.Size = new Size(254, 64);
+            panel_win_aspiration_level.Size = new Size(365, 43);
             panel_win_aspiration_level.TabIndex = 17;
             // 
             // radioButton_WASP_3
             // 
             radioButton_WASP_3.AutoSize = true;
-            radioButton_WASP_3.Location = new Point(89, 35);
+            radioButton_WASP_3.Location = new Point(236, 10);
             radioButton_WASP_3.Name = "radioButton_WASP_3";
-            radioButton_WASP_3.Size = new Size(68, 19);
+            radioButton_WASP_3.Size = new Size(57, 19);
             radioButton_WASP_3.TabIndex = 3;
             radioButton_WASP_3.TabStop = true;
-            radioButton_WASP_3.Text = "WASP-3";
+            radioButton_WASP_3.Text = "ASP-4";
             radioButton_WASP_3.UseVisualStyleBackColor = true;
             // 
             // radioButton_WASP_2
             // 
             radioButton_WASP_2.AutoSize = true;
-            radioButton_WASP_2.Location = new Point(89, 10);
+            radioButton_WASP_2.Location = new Point(162, 10);
             radioButton_WASP_2.Name = "radioButton_WASP_2";
-            radioButton_WASP_2.Size = new Size(68, 19);
+            radioButton_WASP_2.Size = new Size(57, 19);
             radioButton_WASP_2.TabIndex = 2;
             radioButton_WASP_2.TabStop = true;
-            radioButton_WASP_2.Text = "WASP-2";
+            radioButton_WASP_2.Text = "ASP-3";
             radioButton_WASP_2.UseVisualStyleBackColor = true;
             // 
             // radioButton_WASP_1
             // 
             radioButton_WASP_1.AutoSize = true;
-            radioButton_WASP_1.Location = new Point(15, 35);
+            radioButton_WASP_1.Location = new Point(88, 10);
             radioButton_WASP_1.Name = "radioButton_WASP_1";
-            radioButton_WASP_1.Size = new Size(68, 19);
+            radioButton_WASP_1.Size = new Size(57, 19);
             radioButton_WASP_1.TabIndex = 1;
             radioButton_WASP_1.TabStop = true;
-            radioButton_WASP_1.Text = "WASP-1";
+            radioButton_WASP_1.Text = "ASP-2";
             radioButton_WASP_1.UseVisualStyleBackColor = true;
             // 
             // radioButton_WASP_0
@@ -791,10 +810,10 @@
             radioButton_WASP_0.Checked = true;
             radioButton_WASP_0.Location = new Point(15, 10);
             radioButton_WASP_0.Name = "radioButton_WASP_0";
-            radioButton_WASP_0.Size = new Size(68, 19);
+            radioButton_WASP_0.Size = new Size(57, 19);
             radioButton_WASP_0.TabIndex = 0;
             radioButton_WASP_0.TabStop = true;
-            radioButton_WASP_0.Text = "WASP-0";
+            radioButton_WASP_0.Text = "ASP-1";
             radioButton_WASP_0.UseVisualStyleBackColor = true;
             // 
             // textBox_swiching_HR_prob
@@ -827,13 +846,14 @@
             // panel_herarchy_setting
             // 
             panel_herarchy_setting.BorderStyle = BorderStyle.FixedSingle;
+            panel_herarchy_setting.Controls.Add(radioButton2);
             panel_herarchy_setting.Controls.Add(radioButton_hr_3);
             panel_herarchy_setting.Controls.Add(radioButton_hr_2);
             panel_herarchy_setting.Controls.Add(radioButton_hr_1);
             panel_herarchy_setting.Controls.Add(radioButton_hr_0);
             panel_herarchy_setting.Location = new Point(283, 25);
             panel_herarchy_setting.Name = "panel_herarchy_setting";
-            panel_herarchy_setting.Size = new Size(254, 43);
+            panel_herarchy_setting.Size = new Size(313, 43);
             panel_herarchy_setting.TabIndex = 13;
             // 
             // radioButton_hr_3
@@ -844,7 +864,7 @@
             radioButton_hr_3.Size = new Size(52, 19);
             radioButton_hr_3.TabIndex = 3;
             radioButton_hr_3.TabStop = true;
-            radioButton_hr_3.Text = "HR-3";
+            radioButton_hr_3.Text = "HR-2";
             radioButton_hr_3.UseVisualStyleBackColor = true;
             // 
             // radioButton_hr_2
@@ -852,10 +872,10 @@
             radioButton_hr_2.AutoSize = true;
             radioButton_hr_2.Location = new Point(131, 10);
             radioButton_hr_2.Name = "radioButton_hr_2";
-            radioButton_hr_2.Size = new Size(52, 19);
+            radioButton_hr_2.Size = new Size(58, 19);
             radioButton_hr_2.TabIndex = 2;
             radioButton_hr_2.TabStop = true;
-            radioButton_hr_2.Text = "HR-2";
+            radioButton_hr_2.Text = "HR-12";
             radioButton_hr_2.UseVisualStyleBackColor = true;
             // 
             // radioButton_hr_1
@@ -863,10 +883,10 @@
             radioButton_hr_1.AutoSize = true;
             radioButton_hr_1.Location = new Point(73, 10);
             radioButton_hr_1.Name = "radioButton_hr_1";
-            radioButton_hr_1.Size = new Size(52, 19);
+            radioButton_hr_1.Size = new Size(58, 19);
             radioButton_hr_1.TabIndex = 1;
             radioButton_hr_1.TabStop = true;
-            radioButton_hr_1.Text = "HR-1";
+            radioButton_hr_1.Text = "HR-11";
             radioButton_hr_1.UseVisualStyleBackColor = true;
             // 
             // radioButton_hr_0
@@ -878,7 +898,7 @@
             radioButton_hr_0.Size = new Size(52, 19);
             radioButton_hr_0.TabIndex = 0;
             radioButton_hr_0.TabStop = true;
-            radioButton_hr_0.Text = "HR-0";
+            radioButton_hr_0.Text = "HR-1";
             radioButton_hr_0.UseVisualStyleBackColor = true;
             // 
             // button_next
@@ -1440,23 +1460,12 @@
             // panel_competition_type
             // 
             panel_competition_type.BorderStyle = BorderStyle.FixedSingle;
-            panel_competition_type.Controls.Add(radioButton_competition_type_invasion);
             panel_competition_type.Controls.Add(radioButton_competition_type_roulette);
             panel_competition_type.Controls.Add(radioButton_competition_name_tournament);
             panel_competition_type.Location = new Point(16, 220);
             panel_competition_type.Name = "panel_competition_type";
             panel_competition_type.Size = new Size(193, 76);
             panel_competition_type.TabIndex = 3;
-            // 
-            // radioButton_competition_type_invasion
-            // 
-            radioButton_competition_type_invasion.AutoSize = true;
-            radioButton_competition_type_invasion.Location = new Point(3, 53);
-            radioButton_competition_type_invasion.Name = "radioButton_competition_type_invasion";
-            radioButton_competition_type_invasion.Size = new Size(69, 19);
-            radioButton_competition_type_invasion.TabIndex = 2;
-            radioButton_competition_type_invasion.Text = "invasion";
-            radioButton_competition_type_invasion.UseVisualStyleBackColor = true;
             // 
             // radioButton_competition_type_roulette
             // 
@@ -1667,11 +1676,156 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(695, 172);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(158, 19);
+            radioButton1.TabIndex = 32;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "boss_payoff_requirement";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(705, 197);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(66, 23);
+            textBox1.TabIndex = 56;
+            textBox1.TextAlign = HorizontalAlignment.Center;
+            // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(247, 10);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(52, 19);
+            radioButton2.TabIndex = 4;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "HR-3";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            radioButton3.AutoSize = true;
+            radioButton3.Location = new Point(299, 10);
+            radioButton3.Name = "radioButton3";
+            radioButton3.Size = new Size(57, 19);
+            radioButton3.TabIndex = 4;
+            radioButton3.TabStop = true;
+            radioButton3.Text = "ASP-5";
+            radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            radioButton4.AutoSize = true;
+            radioButton4.Location = new Point(247, 10);
+            radioButton4.Name = "radioButton4";
+            radioButton4.Size = new Size(57, 19);
+            radioButton4.TabIndex = 4;
+            radioButton4.TabStop = true;
+            radioButton4.Text = "OFF-4";
+            radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            radioButton5.AutoSize = true;
+            radioButton5.Location = new Point(303, 10);
+            radioButton5.Name = "radioButton5";
+            radioButton5.Size = new Size(57, 19);
+            radioButton5.TabIndex = 5;
+            radioButton5.TabStop = true;
+            radioButton5.Text = "OFF-5";
+            radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(radioButton6);
+            panel2.Controls.Add(radioButton7);
+            panel2.Controls.Add(radioButton8);
+            panel2.Controls.Add(radioButton9);
+            panel2.Controls.Add(radioButton10);
+            panel2.Controls.Add(radioButton11);
+            panel2.Location = new Point(275, 253);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(365, 207);
+            panel2.TabIndex = 20;
+            // 
+            // radioButton6
+            // 
+            radioButton6.AutoSize = true;
+            radioButton6.Location = new Point(303, 10);
+            radioButton6.Name = "radioButton6";
+            radioButton6.Size = new Size(57, 19);
+            radioButton6.TabIndex = 5;
+            radioButton6.TabStop = true;
+            radioButton6.Text = "OFF-5";
+            radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton7
+            // 
+            radioButton7.AutoSize = true;
+            radioButton7.Location = new Point(247, 10);
+            radioButton7.Name = "radioButton7";
+            radioButton7.Size = new Size(57, 19);
+            radioButton7.TabIndex = 4;
+            radioButton7.TabStop = true;
+            radioButton7.Text = "OFF-4";
+            radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            radioButton8.AutoSize = true;
+            radioButton8.Location = new Point(189, 10);
+            radioButton8.Name = "radioButton8";
+            radioButton8.Size = new Size(57, 19);
+            radioButton8.TabIndex = 3;
+            radioButton8.TabStop = true;
+            radioButton8.Text = "OFF-3";
+            radioButton8.UseVisualStyleBackColor = true;
+            // 
+            // radioButton9
+            // 
+            radioButton9.AutoSize = true;
+            radioButton9.Location = new Point(131, 10);
+            radioButton9.Name = "radioButton9";
+            radioButton9.Size = new Size(57, 19);
+            radioButton9.TabIndex = 2;
+            radioButton9.TabStop = true;
+            radioButton9.Text = "OFF-2";
+            radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // radioButton10
+            // 
+            radioButton10.AutoSize = true;
+            radioButton10.Location = new Point(73, 10);
+            radioButton10.Name = "radioButton10";
+            radioButton10.Size = new Size(57, 19);
+            radioButton10.TabIndex = 1;
+            radioButton10.TabStop = true;
+            radioButton10.Text = "OFF-1";
+            radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // radioButton11
+            // 
+            radioButton11.AutoSize = true;
+            radioButton11.Checked = true;
+            radioButton11.Location = new Point(15, 10);
+            radioButton11.Name = "radioButton11";
+            radioButton11.Size = new Size(57, 19);
+            radioButton11.TabIndex = 0;
+            radioButton11.TabStop = true;
+            radioButton11.Text = "OFF-0";
+            radioButton11.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1080, 871);
+            ClientSize = new Size(1457, 871);
             Controls.Add(panel_first_page);
             Name = "Form1";
             Text = "Game of pirates V 1.0";
@@ -1701,6 +1855,8 @@
             panel_max_num_of_games.PerformLayout();
             panel_Network_of_boats.ResumeLayout(false);
             panel_Network_of_boats.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1729,7 +1885,6 @@
         private Label label_competition_type;
         private Panel panel_competition_type;
         private RadioButton radioButton_competition_name_tournament;
-        private RadioButton radioButton_competition_type_invasion;
         private RadioButton radioButton_competition_type_roulette;
         private Panel panel_boat_players_profile;
         private TextBox textBox_B_player_profile_1_1;
@@ -1843,5 +1998,18 @@
         private RadioButton radioButton_V341;
         private RadioButton radioButton_V331;
         private RadioButton radioButton_V321;
+        private TextBox textBox1;
+        private RadioButton radioButton1;
+        private RadioButton radioButton3;
+        private RadioButton radioButton2;
+        private RadioButton radioButton5;
+        private RadioButton radioButton4;
+        private Panel panel2;
+        private RadioButton radioButton6;
+        private RadioButton radioButton7;
+        private RadioButton radioButton8;
+        private RadioButton radioButton9;
+        private RadioButton radioButton10;
+        private RadioButton radioButton11;
     }
 }
