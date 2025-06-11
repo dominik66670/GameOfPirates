@@ -5,6 +5,7 @@ namespace GameOfPirates
         public Form1()
         {
             InitializeComponent();
+            RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true);
         }
 
         private void radioButton20_CheckedChanged(object sender, EventArgs e)
