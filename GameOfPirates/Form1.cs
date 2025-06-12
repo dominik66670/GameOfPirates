@@ -2,10 +2,11 @@ namespace GameOfPirates
 {
     public partial class Form1 : Form
     {
+        public Gra Gra { get; set; }
         public Form1()
         {
             InitializeComponent();
-            RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true);
+            RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, 0, false);
         }
 
         private void radioButton20_CheckedChanged(object sender, EventArgs e)
@@ -51,6 +52,94 @@ namespace GameOfPirates
             chart4.Series[0].Points.AddXY(0.1, 0.2);
             chart4.Series[0].Points.AddXY(0.4, 0.6);
             chart4.Series[0].Points.AddXY(0.9, 0.95);
+        }
+
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            if (radioButton_custom_seed.Checked)
+            {
+                RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text),true);
+            }
+
+            if (checkBox_debug_mode.Checked)
+            {
+                Print.czyscPlik();
+                if (checkBox_test_1.Checked)
+                {
+                    MessageBox.Show("Test1", "Informacja");
+                    Gra = new Gra();
+                    Gra.LadujDaneTest1(int.Parse(textbox_num_of_boats_k.Text));
+                    
+                    Print.print1(Gra);
+                    Print.print2(Gra);
+
+                    if (checkBox_boats_num.Checked)
+                    {
+                        Print.print3(Gra);
+                    }
+
+                    if (checkBox_all_players_global_id.Checked)
+                    {
+                        Print.print11(Gra);
+                    }
+
+                    if (checkBox_hier_in_boats.Checked)
+                    {
+                        Print.print12(Gra);
+                    }
+                    Print.print13(Gra);
+                }
+
+                if (checkBox_test_2.Checked)
+                {
+                    MessageBox.Show("Test2", "Informacja");
+                    Gra = new Gra();
+                    Gra.LadujDaneTest2(int.Parse(textbox_num_of_boats_k.Text));
+                    Print.print1(Gra);
+                    Print.print2(Gra);
+                    if (checkBox_boats_num.Checked)
+                    {
+                        Print.print3(Gra);
+                    }
+
+                    if (checkBox_all_players_global_id.Checked)
+                    {
+                        Print.print11(Gra);
+                    }
+
+                    if (checkBox_hier_in_boats.Checked)
+                    {
+                        Print.print12(Gra);
+                    }
+                    Print.print13(Gra);
+                }
+
+            }
+
+            else
+            {
+                MessageBox.Show("Tryb niedebugowania", "Informacja");
+                Gra = new Gra();
+                Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
+                Print.czyscPlik();
+                Print.print1(Gra);
+                Print.print2(Gra);
+                if (checkBox_boats_num.Checked)
+                {
+                    Print.print3(Gra);
+                }
+
+                if (checkBox_all_players_global_id.Checked)
+                {
+                    Print.print11(Gra);
+                }
+
+                if (checkBox_hier_in_boats.Checked)
+                {
+                    Print.print12(Gra);
+                }
+                Print.print13(Gra);
+            }
         }
     }
 }

@@ -33,6 +33,7 @@ namespace GameOfPirates
                     }
                     hierarchia = hierarchia + Environment.NewLine;
                     File.AppendAllText(sciezkaDoPliku, hierarchia);
+                    //break;
                 }
             }
             catch (Exception ex)
@@ -98,10 +99,32 @@ namespace GameOfPirates
 
         }
 
-        public static void print4(Gra gra)
+        /*public static void print4(Gra gra)
         {
             Console.WriteLine("Boats_weights");
-        }
+            string sciezkaDoPliku = "debug.txt";
+
+            try
+            {
+                File.AppendAllText(sciezkaDoPliku, "Boats_weights" + Environment.NewLine);
+
+                for(int i=0;i<gra.Lodki.Count;i++) 
+                {
+                if(i>0) { }
+                }
+
+                foreach (Lodka lodka in gra.Lodki)
+                {
+                    File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny.ToString() + Environment.NewLine);
+                }
+
+                Console.WriteLine($"Profile łódek zostały dopisane do pliku: {sciezkaDoPliku}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+            }
+        }*/
 
         public static void print11(Gra gra)
         {

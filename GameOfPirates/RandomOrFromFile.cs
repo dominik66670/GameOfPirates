@@ -18,28 +18,38 @@ namespace GameOfPirates
         private readonly List<double> _values;
         private int _index = 0;
         private bool _zPliku;
+        private Random _random;
         // Singleton instance
         private static RandomOrFromFile _instance;
 
         public static RandomOrFromFile Instance => _instance ?? throw new InvalidOperationException("RandomFromFile is not initialized. Call Init(filePath) first.");
 
         // Init method to load values from file
-        public static void Init(string filePath, bool zPliku)
+        public static void Init(string filePath, bool zPliku, int seed,bool czyZSeeda)
         {
             if (_instance != null)
                 throw new InvalidOperationException("RandomFromFile is already initialized.");
 
-            _instance = new RandomOrFromFile(filePath, zPliku);
+            _instance = new RandomOrFromFile(filePath, zPliku, seed, czyZSeeda);
         }
 
         // Private constructor — only accessible via Init
-        private RandomOrFromFile(string filePath, bool zPliku)
+        private RandomOrFromFile(string filePath, bool zPliku, int seed,bool czyZSeeda)
         {
             _values = File.ReadAllLines(filePath)
                 .Where(line => !string.IsNullOrWhiteSpace(line))
                 .Select(line => double.Parse(line, CultureInfo.InvariantCulture))
                 .ToList();
             _zPliku = zPliku;
+            if (czyZSeeda)
+            {
+                _random = new Random(seed);
+            }
+            else
+            {
+              _random= new Random();
+            }
+
             if (_values.Count == 0)
                 throw new InvalidOperationException("Plik nie zawiera żadnych liczb.");
         }
@@ -56,8 +66,7 @@ namespace GameOfPirates
 
             else
             {
-                Random random = new Random();
-                return random.NextDouble();
+                return _random.NextDouble();
             }
         }
 
@@ -72,14 +81,24 @@ namespace GameOfPirates
             }
             else
             {
-                Random random = new Random();
-                return random.Next(min, max);
+                return _random.Next(min, max);
             }
         }
 
         public void CzyZpliku(bool zPliku)
         {
             _zPliku = zPliku;
+        }
+
+        public void CzyZSeeda(int seed,bool czySeed)
+        {
+            if (czySeed) { 
+                _random = new Random(seed); 
+            }
+
+            else { 
+                _random= new Random(); 
+            }
         }
     }
 
