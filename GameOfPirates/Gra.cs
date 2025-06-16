@@ -106,5 +106,11 @@ namespace GameOfPirates
                 Lodki.Add(lodka);
             }
         }
+        public void DataInitialization1(int[,] Selected_Boat_profiles)
+        {
+            float[,] All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
+            int[,] H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
+            Console.WriteLine("Test");
+        }
     }
 }

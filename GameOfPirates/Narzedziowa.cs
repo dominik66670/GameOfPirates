@@ -83,5 +83,62 @@ namespace GameOfPirates
 
             return tablica2D;
         }
+        public static float[,] ZaladujIntyZPlikuDoTablicy2DFloat(string sciezkaDoPliku)
+        {
+            float[,] tablica2D = null;
+
+            try
+            {
+                if (File.Exists(sciezkaDoPliku))
+                {
+                    var wczytane_linie = File.ReadAllLines(sciezkaDoPliku)
+                                         .Where(linia => !string.IsNullOrWhiteSpace(linia));
+                    List<string> list = new List<string>();
+                    foreach(string l in wczytane_linie)
+                    {
+                        if (!l.StartsWith("#"))
+                        {
+                            list.Add(l);
+                        }
+                    }
+                    string[] linie = list.ToArray();
+                    if (linie.Length > 0)
+                    {
+                        int liczbaWierszy = linie.Length;
+                        int liczbaKolumn = 0;
+
+                        foreach (string linia in linie)
+                        {
+                            int kolumnyWiersza = linia.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+                            liczbaKolumn = Math.Max(liczbaKolumn, kolumnyWiersza);
+                        }
+
+                        tablica2D = new float[liczbaWierszy, liczbaKolumn];
+
+                        for (int i = 0; i < liczbaWierszy; i++)
+                        {
+                            string[] elementyWiersza = linie[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            for (int j = 0; j < liczbaKolumn; j++)
+                            {
+                                if (j < elementyWiersza.Length && float.TryParse(elementyWiersza[j].Trim(), out float liczba))
+                                {
+                                    tablica2D[i, j] = liczba;
+                                }
+                                else
+                                {
+                                    tablica2D[i, j] = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return tablica2D;
+        }
     }
 }

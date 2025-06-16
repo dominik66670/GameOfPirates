@@ -121,6 +121,7 @@ namespace GameOfPirates
                 MessageBox.Show("Tryb niedebugowania", "Informacja");
                 Gra = new Gra();
                 Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
+                Gra.DataInitialization1(readBoatsProfile());
                 Print.czyscPlik();
                 Print.print1(Gra);
                 Print.print2(Gra);
@@ -140,6 +141,17 @@ namespace GameOfPirates
                 }
                 Print.print13(Gra);
             }
+        }
+        private int[,] readBoatsProfile()
+        {
+
+            int[,] profile = { { int.Parse(textBox_B_player_profile_1_1.Text), int.Parse(textBox_B_player_profile_1_2.Text),
+                    int.Parse(textBox_B_player_profile_1_3.Text), int.Parse(textBox_B_player_profile_3_1.Text),
+                    int.Parse(textBox_B_player_profile_3_2.Text), int.Parse(textBox_B_player_profile_3_3.Text) },
+            {int.Parse(textBox_B_player_profile_2_1.Text), int.Parse(textBox_B_player_profile_2_2.Text),
+                    int.Parse(textBox_B_player_profile_2_3.Text), int.Parse(textBox_B_player_profile_4_1.Text),
+                    int.Parse(textBox_B_player_profile_4_2.Text), int.Parse(textBox_B_player_profile_4_3.Text) } };
+            return profile;
         }
     }
 }
