@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameOfPirates
 {
-    internal class Lodka
+    public class Lodka
     {
         public ArrayList Piraci { get; set; }
 

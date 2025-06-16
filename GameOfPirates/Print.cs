@@ -126,6 +126,22 @@ namespace GameOfPirates
             }
         }*/
 
+
+        public static void printText(string text)
+        {
+            string sciezkaDoPliku = "debug.txt";
+
+            try
+            {
+                File.AppendAllText(sciezkaDoPliku, text + Environment.NewLine);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+            }
+        }
+
+
         public static void print11(Gra gra)
         {
             string sciezkaDoPliku = "debug.txt";
