@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace GameOfPirates
 {
@@ -11,7 +12,9 @@ namespace GameOfPirates
     {
 
         public ArrayList Lodki { get; set; }
-
+        public float[,]? All_boat_game_profiles { get; set; }
+        public int[,]? H_template { get; set; }
+        public int[,]? Selected_Boat_profile { get; set; }
 
         public void InicjujDane(int ilelodek)
         {
@@ -106,11 +109,53 @@ namespace GameOfPirates
                 Lodki.Add(lodka);
             }
         }
-        public void DataInitialization1(int[,] Selected_Boat_profiles)
+        public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2)
         {
-            float[,] All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
-            int[,] H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
-            Console.WriteLine("Test");
+            All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
+            H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
+            Selected_Boat_profile = selected_Boat_profiles;
+            if (debug.Checked && test1.Checked)
+            {
+                if (K==1 && M==1 && N==1) 
+                {
+                    LadujDaneTest1(K);
+                    Print.print1(this);
+                    return;
+                }
+                if (K==12 && M==4 && N == 3)
+                {
+                    LadujDaneTest2(K);
+                    // use RANDOM_NUM[] to calculate Boats_and_H[1..M.N,1..9]
+                    // CALCULATE Boats_and_H;
+                    // print ("L=12,M=4,N=3");
+                    Print.print2(this);
+                }
+                if (K==9 && M==3 && N == 3)
+                {
+                    Print.print11(this);
+                    Print.print12(this);
+                    Print.print2(this);
+                }
+            }
+            else
+            {
+                // CALCULATE All_players_glob_ID
+                // CALCULATE Hier_in_boats
+                // CALCULATE Boats_and_H
+            }
+            if (test2.Checked) 
+            {
+                Print.print11(this);
+                Print.print12(this);
+                Print.print2(this);
+            }
+            // CALCULATE Boats_glob_ID
+            // CALCULATE Boats_neigb
+            if (test2.Checked)
+            {
+                Print.print3(this);
+                // Print.print4(this);
+            }
         }
     }
 }

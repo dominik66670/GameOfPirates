@@ -61,6 +61,7 @@ namespace GameOfPirates
                 RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text),true);
             }
 
+
             if (checkBox_debug_mode.Checked)
             {
                 Print.czyscPlik();
@@ -118,10 +119,13 @@ namespace GameOfPirates
 
             else
             {
+                int K = int.Parse(textbox_num_of_boats_k.Text);
+                int N = int.Parse(textBox_num_of_cols_n.Text);
+                int M = int.Parse(textBox_num_of_rows_m.Text);
                 MessageBox.Show("Tryb niedebugowania", "Informacja");
                 Gra = new Gra();
                 Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
-                Gra.DataInitialization1(readBoatsProfile());
+                Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2);
                 Print.czyscPlik();
                 Print.print1(Gra);
                 Print.print2(Gra);
