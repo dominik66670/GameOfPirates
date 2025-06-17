@@ -60,90 +60,92 @@ namespace GameOfPirates
             {
                 RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text),true);
             }
+            Print.czyscPlik();
+            int K = int.Parse(textbox_num_of_boats_k.Text);
+            int N = int.Parse(textBox_num_of_cols_n.Text);
+            int M = int.Parse(textBox_num_of_rows_m.Text);
+            MessageBox.Show("Tryb niedebugowania", "Informacja");
+            Gra = new Gra();
+            //Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
+            Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2);
 
-            if (checkBox_debug_mode.Checked)
-            {
-                Print.czyscPlik();
-                if (checkBox_test_1.Checked)
-                {
-                    MessageBox.Show("Test1", "Informacja");
-                    Gra = new Gra();
-                    Gra.LadujDaneTest1(int.Parse(textbox_num_of_boats_k.Text));
+            //if (checkBox_debug_mode.Checked)
+            //{
+            //    Print.czyscPlik();
+            //    if (checkBox_test_1.Checked)
+            //    {
+            //        MessageBox.Show("Test1", "Informacja");
+            //        Gra = new Gra();
+            //        Gra.LadujDaneTest1(int.Parse(textbox_num_of_boats_k.Text));
                     
-                    Print.print1(Gra);
-                    Print.print2(Gra);
+            //        Print.print1(Gra);
+            //        Print.print2(Gra);
 
-                    if (checkBox_boats_num.Checked)
-                    {
-                        Print.print3(Gra);
-                    }
+            //        if (checkBox_boats_num.Checked)
+            //        {
+            //            Print.print3(Gra);
+            //        }
 
-                    if (checkBox_all_players_global_id.Checked)
-                    {
-                        Print.print11(Gra);
-                    }
+            //        if (checkBox_all_players_global_id.Checked)
+            //        {
+            //            Print.print11(Gra);
+            //        }
 
-                    if (checkBox_hier_in_boats.Checked)
-                    {
-                        Print.print12(Gra);
-                    }
-                    Print.print13(Gra);
-                }
+            //        if (checkBox_hier_in_boats.Checked)
+            //        {
+            //            Print.print12(Gra);
+            //        }
+            //        Print.print13(Gra);
+            //    }
 
-                if (checkBox_test_2.Checked)
-                {
-                    MessageBox.Show("Test2", "Informacja");
-                    Gra = new Gra();
-                    Gra.LadujDaneTest2(int.Parse(textbox_num_of_boats_k.Text));
-                    Print.print1(Gra);
-                    Print.print2(Gra);
-                    if (checkBox_boats_num.Checked)
-                    {
-                        Print.print3(Gra);
-                    }
+            //    if (checkBox_test_2.Checked)
+            //    {
+            //        MessageBox.Show("Test2", "Informacja");
+            //        Gra = new Gra();
+            //        Gra.LadujDaneTest2(int.Parse(textbox_num_of_boats_k.Text));
+            //        Print.print1(Gra);
+            //        Print.print2(Gra);
+            //        if (checkBox_boats_num.Checked)
+            //        {
+            //            Print.print3(Gra);
+            //        }
 
-                    if (checkBox_all_players_global_id.Checked)
-                    {
-                        Print.print11(Gra);
-                    }
+            //        if (checkBox_all_players_global_id.Checked)
+            //        {
+            //            Print.print11(Gra);
+            //        }
 
-                    if (checkBox_hier_in_boats.Checked)
-                    {
-                        Print.print12(Gra);
-                    }
-                    Print.print13(Gra);
-                }
+            //        if (checkBox_hier_in_boats.Checked)
+            //        {
+            //            Print.print12(Gra);
+            //        }
+            //        Print.print13(Gra);
+            //    }
 
-            }
+            //}
 
-            else
-            {
-                int K = int.Parse(textbox_num_of_boats_k.Text);
-                int N = int.Parse(textBox_num_of_cols_n.Text);
-                int M = int.Parse(textBox_num_of_rows_m.Text);
-                MessageBox.Show("Tryb niedebugowania", "Informacja");
-                Gra = new Gra();
-                Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
-                Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2);
-                Print.czyscPlik();
-                Print.print1(Gra);
-                Print.print2(Gra);
-                if (checkBox_boats_num.Checked)
-                {
-                    Print.print3(Gra);
-                }
+            //else
+            //{
+                
+            //    Print.czyscPlik();
+            //    Print.print1(Gra);
+            //    Print.print2(Gra);
+            //    if (checkBox_boats_num.Checked)
+            //    {
+            //        Print.print3(Gra);
+            //    }
 
-                if (checkBox_all_players_global_id.Checked)
-                {
-                    Print.print11(Gra);
-                }
+            //    if (checkBox_all_players_global_id.Checked)
+            //    {
+            //        Print.print11(Gra);
+            //    }
 
-                if (checkBox_hier_in_boats.Checked)
-                {
-                    Print.print12(Gra);
-                }
-                Print.print13(Gra);
-            } 
+            //    if (checkBox_hier_in_boats.Checked)
+            //    {
+            //        Print.print12(Gra);
+            //    }
+            //    Print.print13(Gra);
+            //} 
         }
         private int[,] readBoatsProfile()
         {

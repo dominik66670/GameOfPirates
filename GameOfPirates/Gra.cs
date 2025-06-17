@@ -181,10 +181,10 @@ namespace GameOfPirates
             }
             // CALCULATE Boats_neigb 
 
-            Print.printText("AAAAA");
+            
             if (test2.Checked)
             {
-                Print.printText("BBBBB");
+                
                 Print.print3(this);
                 Print.print4(this);
             }
