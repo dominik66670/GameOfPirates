@@ -143,14 +143,10 @@ namespace GameOfPirates
         }
 
 
-      /*  public static List<Lodka> ZnajdzSasiadowLodki(Gra g, int m, int n, int id)
+        public static List<int> ZnajdzSasiadowLodki(Gra g, int m, int n, int id)
         {
-            
-            List<Lodka> sasiedzi = new List<Lodka>();
-
-            // Znajdź indeks łódki o danym identyfikatorze
+            List<int> sasiedzi=new List<int>();
             int index = -1;
-
             int idx = -1;
             foreach (Lodka lodka in g.Lodki)
             {
@@ -162,33 +158,25 @@ namespace GameOfPirates
                 }
             }
 
+
+
             if (index == -1)
                 return sasiedzi; // nie znaleziono
 
-            int i = index / n;
-            int j = index % n;
 
-            for (int di = -1; di <= 1; di++)
+            idx = -1;
+            foreach (Lodka l in g.Lodki)
             {
-                for (int dj = -1; dj <= 1; dj++)
-                {
-                    if (di == 0 && dj == 0)
-                        continue;
-
-                    int ni = i + di;
-                    int nj = j + dj;
-
-                    if (ni >= 0 && ni < m && nj >= 0 && nj < n)
-                    {
-                        int sasiadIndex = ni * n + nj;
-                        Lodka sasiad = (Lodka)lodki[sasiadIndex];
-                        sasiedzi.Add(sasiad);
-                    }
+                idx++;
+                if (idx == index - 1||index==index+1||idx==index+m|| idx == index - m|| 
+                    idx == index + m + 1|| idx == index + m - 1|| idx == index - m + 1 || idx == index - m - 1)
+                { 
+                sasiedzi.Add(l.Identyfikator_Globalny);
                 }
             }
 
             return sasiedzi;
-        }*/
+        }
 
 
     }

@@ -61,7 +61,6 @@ namespace GameOfPirates
                 RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text),true);
             }
 
-
             if (checkBox_debug_mode.Checked)
             {
                 Print.czyscPlik();
@@ -144,7 +143,7 @@ namespace GameOfPirates
                     Print.print12(Gra);
                 }
                 Print.print13(Gra);
-            }
+            } 
         }
         private int[,] readBoatsProfile()
         {

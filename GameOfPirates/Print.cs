@@ -99,14 +99,14 @@ namespace GameOfPirates
 
         }
 
-        /*public static void print4(Gra gra)
+        public static void print4(Gra gra)
         {
-            Console.WriteLine("Boats_weights");
+            Console.WriteLine("Boats_neights");
             string sciezkaDoPliku = "debug.txt";
 
             try
             {
-                File.AppendAllText(sciezkaDoPliku, "Boats_weights" + Environment.NewLine);
+                File.AppendAllText(sciezkaDoPliku, "Boats_neights" + Environment.NewLine);
 
                 for(int i=0;i<gra.Lodki.Count;i++) 
                 {
@@ -115,7 +115,14 @@ namespace GameOfPirates
 
                 foreach (Lodka lodka in gra.Lodki)
                 {
-                    File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny.ToString() + Environment.NewLine);
+                    File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny + Environment.NewLine);
+                    string pom = "";
+                    foreach(int sasiad in lodka.Sasiedzi)
+                    {
+                        pom = pom + sasiad + ",";
+                    }
+
+                    File.AppendAllText(sciezkaDoPliku, pom + Environment.NewLine);
                 }
 
                 Console.WriteLine($"Profile łódek zostały dopisane do pliku: {sciezkaDoPliku}");
@@ -124,7 +131,7 @@ namespace GameOfPirates
             {
                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
             }
-        }*/
+        }
 
 
         public static void printText(string text)

@@ -175,15 +175,18 @@ namespace GameOfPirates
             j++;
             }
 
-            /*foreach (Lodka l in this.Lodki)
+            foreach (Lodka l in this.Lodki)
             {
-                ArrayList sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny);
-            }*/
+                l.Sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny);
+            }
             // CALCULATE Boats_neigb 
+
+            Print.printText("AAAAA");
             if (test2.Checked)
             {
+                Print.printText("BBBBB");
                 Print.print3(this);
-                // Print.print4(this);
+                Print.print4(this);
             }
         }
     }

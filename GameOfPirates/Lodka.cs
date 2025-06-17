@@ -15,6 +15,8 @@ namespace GameOfPirates
 
         public int[] Profil { get; set; }
 
+        public List <int> Sasiedzi { get; set; }
+
         public void IdnetyfikatoryGlobalne(int n)
         {
             Piraci = new ArrayList();
