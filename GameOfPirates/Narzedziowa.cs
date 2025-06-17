@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -83,5 +84,111 @@ namespace GameOfPirates
 
             return tablica2D;
         }
+        public static float[,] ZaladujIntyZPlikuDoTablicy2DFloat(string sciezkaDoPliku)
+        {
+            float[,] tablica2D = null;
+
+            try
+            {
+                if (File.Exists(sciezkaDoPliku))
+                {
+                    var wczytane_linie = File.ReadAllLines(sciezkaDoPliku)
+                                         .Where(linia => !string.IsNullOrWhiteSpace(linia));
+                    List<string> list = new List<string>();
+                    foreach(string l in wczytane_linie)
+                    {
+                        if (!l.StartsWith("#"))
+                        {
+                            list.Add(l);
+                        }
+                    }
+                    string[] linie = list.ToArray();
+                    if (linie.Length > 0)
+                    {
+                        int liczbaWierszy = linie.Length;
+                        int liczbaKolumn = 0;
+
+                        foreach (string linia in linie)
+                        {
+                            int kolumnyWiersza = linia.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+                            liczbaKolumn = Math.Max(liczbaKolumn, kolumnyWiersza);
+                        }
+
+                        tablica2D = new float[liczbaWierszy, liczbaKolumn];
+
+                        for (int i = 0; i < liczbaWierszy; i++)
+                        {
+                            string[] elementyWiersza = linie[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            for (int j = 0; j < liczbaKolumn; j++)
+                            {
+                                if (j < elementyWiersza.Length && float.TryParse(elementyWiersza[j].Trim(), out float liczba))
+                                {
+                                    tablica2D[i, j] = liczba;
+                                }
+                                else
+                                {
+                                    tablica2D[i, j] = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return tablica2D;
+        }
+
+
+        public static List<int> ZnajdzSasiadowLodki(Gra g, int m, int n, int id)
+        {
+            List<int> sasiedzi=new List<int>();
+            int index = -1;
+            int idx = -1;
+            foreach (Lodka lodka in g.Lodki)
+            {
+                idx++;
+                if (lodka.Identyfikator_Globalny == id)
+                {
+                    index = idx;
+                    break;
+                }
+            }
+
+
+
+            if (index == -1)
+                return sasiedzi; // nie znaleziono
+
+
+            idx = -1;
+            foreach (Lodka l in g.Lodki)
+            {
+                idx++;
+                if (
+                    (index%n>0&&idx == index - n - 1) //LGR
+                    || idx==index-n //G
+                    || (index % n <n-1 && idx == index - n + 1) //PGR
+
+                    || (index % n > 0 && idx == index - 1) //L
+                    || (index % n < n - 1 && idx == index + 1) //P
+
+                    || idx == index + n //D
+                    || (index % n > 0 && idx == index + n - 1) //LDR
+                    || (index % n < n - 1 && idx == index + n + 1) //PDR
+
+                    )
+                { 
+                sasiedzi.Add(l.Identyfikator_Globalny);
+                }
+            }
+
+            return sasiedzi;
+        }
+
+
     }
 }

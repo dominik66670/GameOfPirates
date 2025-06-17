@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace GameOfPirates
 {
-    internal class Lodka
+    public class Lodka
     {
         public ArrayList Piraci { get; set; }
 
         public int Identyfikator_Globalny { get; set; }
 
         public int[] Profil { get; set; }
+
+        public List <int> Sasiedzi { get; set; }
 
         public void IdnetyfikatoryGlobalne(int n)
         {

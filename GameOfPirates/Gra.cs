@@ -2,15 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace GameOfPirates
 {
     public class Gra
     {
 
-        public ArrayList Lodki { get; set; }
+        public ArrayList Lodki { get; set; } =new ArrayList();
+        public float[,]? All_boat_game_profiles { get; set; }
+        public int[,]? H_template { get; set; }
+        public int[,]? Selected_Boat_profile { get; set; }
+
+
+    
 
 
         public void InicjujDane(int ilelodek)
@@ -104,6 +112,81 @@ namespace GameOfPirates
 
                 lodka.Identyfikator_Globalny = i;
                 Lodki.Add(lodka);
+            }
+        }
+        public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2)
+        {
+            All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
+            H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
+            Selected_Boat_profile = selected_Boat_profiles;
+            if (debug.Checked && test1.Checked)
+            {
+                if (K==1 && M==1 && N==1) 
+                {
+                    LadujDaneTest1(K);
+                    Print.print1(this);
+                    return;
+                }
+                if (K==12 && M==4 && N == 3)
+                {
+                    LadujDaneTest2(K);
+                    // use RANDOM_NUM[] to calculate Boats_and_H[1..M.N,1..9]
+                    // CALCULATE Boats_and_H;
+                    Print.printText("L=12,M=4,N=3");
+                    Print.print2(this);
+                }
+                if (K==9 && M==3 && N == 3)
+                {
+                    Print.print11(this);
+                    Print.print12(this);
+                    Print.print2(this);
+                }
+            }
+            else
+            {
+                RandomOrFromFile.Instance.CzyZSeeda(0, false);
+                RandomOrFromFile.Instance.CzyZpliku(true);
+
+                int igp = 0;
+                Lodki = new ArrayList();
+                for (int i = 0; i < K; i++)
+                {
+                    Lodka lodka = new Lodka();
+                    lodka.IdnetyfikatoryGlobalne(igp); // CALCULATE All_players_glob_ID 
+                    lodka.LosujHierarchie(); // CALCULATE Hier_in_boats
+                    lodka.LosujProfil();
+                    igp = igp + 9;
+                    Lodki.Add(lodka);
+                }
+
+                // CALCULATE Boats_and_H - Nie mam pojęcia co to jest
+            }
+            if (test2.Checked) 
+            {
+                Print.print11(this);
+                Print.print12(this);
+                Print.print2(this);
+            }
+
+            int j = 0;
+            foreach (Lodka l in this.Lodki)
+            {
+            l.Identyfikator_Globalny= j; // CALCULATE Boats_glob_ID
+            j++;
+            }
+
+            foreach (Lodka l in this.Lodki)
+            {
+                l.Sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny);
+            }
+            // CALCULATE Boats_neigb 
+
+            
+            if (test2.Checked)
+            {
+                
+                Print.print3(this);
+                Print.print4(this);
             }
         }
     }
