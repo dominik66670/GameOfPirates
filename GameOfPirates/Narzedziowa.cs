@@ -168,8 +168,19 @@ namespace GameOfPirates
             foreach (Lodka l in g.Lodki)
             {
                 idx++;
-                if (idx == index - 1||index==index+1||idx==index+m|| idx == index - m|| 
-                    idx == index + m + 1|| idx == index + m - 1|| idx == index - m + 1 || idx == index - m - 1)
+                if (
+                    (index%n>0&&idx == index - n - 1) //LGR
+                    || idx==index-n //G
+                    || (index % n <n-1 && idx == index - n + 1) //PGR
+
+                    || (index % n > 0 && idx == index - 1) //L
+                    || (index % n < n - 1 && idx == index + 1) //P
+
+                    || idx == index + n //D
+                    || (index % n > 0 && idx == index + n - 1) //LDR
+                    || (index % n < n - 1 && idx == index + n + 1) //PDR
+
+                    )
                 { 
                 sasiedzi.Add(l.Identyfikator_Globalny);
                 }
