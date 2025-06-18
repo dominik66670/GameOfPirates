@@ -119,6 +119,7 @@ namespace GameOfPirates
             All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
             H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
             Selected_Boat_profile = selected_Boat_profiles;
+            
             if (debug.Checked && test1.Checked)
             {
                 if (K==1 && M==1 && N==1) 
@@ -146,7 +147,7 @@ namespace GameOfPirates
             {
                 RandomOrFromFile.Instance.CzyZSeeda(0, false);
                 RandomOrFromFile.Instance.CzyZpliku(true);
-
+                var wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
                 int igp = 0;
                 Lodki = new ArrayList();
                 for (int i = 0; i < K; i++)
