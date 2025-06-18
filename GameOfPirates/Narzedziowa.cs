@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.LinkLabel;
 
 namespace GameOfPirates
 {
@@ -188,7 +189,20 @@ namespace GameOfPirates
 
             return sasiedzi;
         }
-
+        public static void debug_save_generated_random_numbers_to_file(IEnumerable doZapisu)
+        {
+            List<int> list = new List<int>();
+            foreach (List<int> i in doZapisu)
+            {
+                list.AddRange(i);
+            }
+            // Write the string array to a new file named "WriteLines.txt".
+            using (StreamWriter outputFile = new StreamWriter("Testy.txt"))
+            {
+                foreach (int line in list)
+                    outputFile.WriteLine(line);
+            }
+        }
 
     }
 }

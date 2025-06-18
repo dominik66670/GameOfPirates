@@ -147,7 +147,8 @@ namespace GameOfPirates
             {
                 RandomOrFromFile.Instance.CzyZSeeda(0, false);
                 RandomOrFromFile.Instance.CzyZpliku(true);
-                var wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
+                List<List<int>> wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
+                //Narzedziowa.debug_save_generated_random_numbers_to_file(wartosci);
                 int igp = 0;
                 Lodki = new ArrayList();
                 for (int i = 0; i < K; i++)
