@@ -84,6 +84,27 @@ namespace GameOfPirates
                 return _random.Next(min, max);
             }
         }
+        public List<List<int>> losoweWartosciLudek(int K)
+        {
+            List<List<int>> losoweWartosci = new List<List<int>>();
+            for (int i = 0; i < K; i++)
+            {
+                List<int> liczbyLosowe = new List<int>() { 0,0,0,0,0,0,0,0,0};
+                List<double> liczbyLosoweZPliku = new List<double>();
+                for (int j = 0; j < 9; j++)
+                {
+                    liczbyLosoweZPliku.Add(NextDouble());
+                } 
+                for (int j = 1;j <= 9; j++)
+                {
+                    int min_index = liczbyLosoweZPliku.IndexOf(liczbyLosoweZPliku.Min());
+                    liczbyLosoweZPliku[min_index] = 10.0;
+                    liczbyLosowe[min_index] = j;
+                }
+                losoweWartosci.Add(liczbyLosowe);
+            }
+            return losoweWartosci;
+        }
 
         public void CzyZpliku(bool zPliku)
         {
