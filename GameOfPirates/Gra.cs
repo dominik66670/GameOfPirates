@@ -16,11 +16,19 @@ namespace GameOfPirates
         public float[,]? All_boat_game_profiles { get; set; }
         public int[,]? H_template { get; set; }
         public int[,]? Selected_Boat_profile { get; set; }
+        public int[,]? Offer_OFF_1 { get; set; }
+        public int[,]? Voting_offer_OFF_1 { get; set; }
+        public int[]? Voting_sum_OFF_1 { get; set; }
+        public int[]? Voting_thr_OFF_1 { get; set; }
+        public List<int>? final_round { get; set; }
 
 
-    
 
 
+        public Gra()
+        {
+            final_round = new List<int>();
+        }
         public void InicjujDane(int ilelodek)
         {
             int igp = 0;
@@ -212,9 +220,15 @@ namespace GameOfPirates
 
         public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2)
         {
-            All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
+            
+            All_boat_game_profiles = Narzedziowa.ZaladujFloatZPlikuDoTablicy2D("DATA\\All_boat_game_profiles.txt");
             H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
             Selected_Boat_profile = selected_Boat_profiles;
+            Offer_OFF_1 = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\Offer_OFF-1.txt");
+            Voting_offer_OFF_1 = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\Voting_offer_OFF-1.txt");
+            Voting_sum_OFF_1 = Narzedziowa.CzytajTabliceIntZPliku("DATA\\Voting_sum_OFF-1.txt");
+            Voting_thr_OFF_1 = Narzedziowa.CzytajTabliceIntZPliku("DATA\\Voting_thr_OFF-1.txt");
+
             
             if (debug.Checked && test1.Checked)
             {
@@ -287,5 +301,48 @@ namespace GameOfPirates
                 Print.print4(this);
             }
         }
+        public void Play10(int[,] Boat_game_profiles, int cr_boat)
+        {
+            Lodka lodka = (Lodka)Lodki[cr_boat];
+            List<Pirat> Boat_crew = null;
+            for (int i = 0; i < 6; i++)
+            {
+                if (Boat_game_profiles[i, 0] == 10)
+                {
+                    
+                    Boat_crew = lodka.Piraci.Cast<Pirat>().ToList();
+                    goto PO1;
+                }
+            }
+            PO1:
+            for(int round = 0; round < 8; round++)
+            {
+                Pirat boss = Boat_crew[round];
+                int kolumny = Offer_OFF_1.GetLength(1);
+                int[] round_offer = new int[kolumny];
+                for (int i = 0;i < kolumny; i++)
+                {
+                    round_offer[i] = Offer_OFF_1[round,i];
+                }
+                kolumny = Voting_offer_OFF_1.GetLength(1);
+                int[] round_voting = new int[kolumny];
+                for (int i = 0; i < kolumny; i++)
+                {
+                    round_voting[i] = Voting_offer_OFF_1[round, i];
+                }
+                if (Voting_sum_OFF_1[round] >= Voting_thr_OFF_1[round])
+                {
+                    final_round.Add(round);
+                    //Calc_boat_EDF
+                    //BOAT_GAME_STATIC-1
+                }
+                else
+                {
+                    MessageBox.Show("boat = "+lodka.Identyfikator_Globalny+" voting result violeted");
+                }
+
+            }
+        }
+
     }
 }
