@@ -13,6 +13,7 @@ namespace GameOfPirates
         {
             Console.WriteLine("Single_boat");
 
+
             string sciezkaDoPliku = "debug.txt";
 
             try
@@ -22,18 +23,20 @@ namespace GameOfPirates
                 foreach (Lodka lodka in gra.Lodki)
                 {
                     string hierarchia = "";
-                    foreach (Pirat pirat in lodka.Piraci)
+
+                    int[,] SingleBoat = lodka.SingleBoat();
+
+                    for (int i = 0; i < 3; i++)
                     {
-                        hierarchia = hierarchia + pirat.Identyfikator_globalny + " ";
-                        licznik++;
-                        if (licznik % 3 == 0)
+                        for (int j = 0; j < 3; j++)
                         {
-                            hierarchia = hierarchia + Environment.NewLine;
+                            hierarchia = hierarchia + SingleBoat[i, j] + " ";
                         }
+                        hierarchia = hierarchia + Environment.NewLine;
                     }
+
                     hierarchia = hierarchia + Environment.NewLine;
                     File.AppendAllText(sciezkaDoPliku, hierarchia);
-                    //break;
                 }
             }
             catch (Exception ex)
@@ -41,6 +44,35 @@ namespace GameOfPirates
                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
             }
 
+
+            /* string sciezkaDoPliku = "debug.txt";
+
+             try
+             {
+                 File.AppendAllText(sciezkaDoPliku, "Single_boat" + Environment.NewLine);
+                 int licznik = 0;
+                 foreach (Lodka lodka in gra.Lodki)
+                 {
+                     string hierarchia = "";
+                     foreach (Pirat pirat in lodka.Piraci)
+                     {
+                         hierarchia = hierarchia + pirat.Identyfikator_globalny + " ";
+                         licznik++;
+                         if (licznik % 3 == 0)
+                         {
+                             hierarchia = hierarchia + Environment.NewLine;
+                         }
+                     }
+                     hierarchia = hierarchia + Environment.NewLine;
+                     File.AppendAllText(sciezkaDoPliku, hierarchia);
+                     //break;
+                 }
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+             }
+            */
 
         }
 
@@ -53,22 +85,24 @@ namespace GameOfPirates
             try
             {
                 File.AppendAllText(sciezkaDoPliku, "Boats_and_H" + Environment.NewLine);
-                int licznik = 0;
-                foreach (Lodka lodka in gra.Lodki)
-                {
-                    string hierarchia = "";
-                    foreach (Pirat pirat in lodka.Piraci)
+                int [,] Boats_and_H = gra.Boats_And_H();
+
+                    string bufor = "";
+
+                    //int[,] BoatAndH = lodka.SingleBoat();
+
+                    for (int i = 0; i < gra.Lodki.Count; i++)
                     {
-                        hierarchia = hierarchia + pirat.Hierarchia_w_lodce + " ";
-                        licznik++;
-                        if (licznik % 3 == 0)
+                        for (int j = 0; j < 9; j++)
                         {
-                            hierarchia = hierarchia + Environment.NewLine;
+                            bufor = bufor + Boats_and_H[i, j] + " ";
                         }
-                    }
-                    hierarchia = hierarchia + Environment.NewLine;
-                    File.AppendAllText(sciezkaDoPliku, hierarchia);
-                }
+                        bufor = bufor + Environment.NewLine;
+                    } 
+ 
+                    bufor = bufor + Environment.NewLine;
+                    File.AppendAllText(sciezkaDoPliku, bufor);
+                
             }
             catch (Exception ex)
             {

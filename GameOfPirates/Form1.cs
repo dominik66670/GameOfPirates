@@ -56,10 +56,25 @@ namespace GameOfPirates
 
         private void button_next_Click(object sender, EventArgs e)
         {
+
+
             if (radioButton_custom_seed.Checked)
             {
-                RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text),true);
+                RandomOrFromFile.Reset();
+                RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, Int32.Parse(textBox_custom_seed.Text), true);
+                // RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text),true);
             }
+
+            else
+            {
+                RandomOrFromFile.Reset();
+                RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, 0, false);
+            }
+
+
+            int test1 = RandomOrFromFile.Instance.Next(1, 100);
+            double test2 = RandomOrFromFile.Instance.NextDouble();
+
             Print.czyscPlik();
             int K = int.Parse(textbox_num_of_boats_k.Text);
             int N = int.Parse(textBox_num_of_cols_n.Text);
