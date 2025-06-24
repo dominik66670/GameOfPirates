@@ -247,6 +247,9 @@ namespace GameOfPirates
             
             if (debug.Checked && test1.Checked)
             {
+                RandomOrFromFile.Reset();
+                RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true, 0, false); //Wszystkie korzystają z pliku RAND NUM
+
                 if (K==1 && M==1 && N==1) 
                 {
                     LadujDaneTest1(M,N);

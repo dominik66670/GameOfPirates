@@ -216,9 +216,10 @@ namespace GameOfPirates
 
             foreach((int val,int x) ktory_sasiad in kolejnosc)
             {
-                if(sasiedzi[ktory_sasiad.x]!=id)
-                sasiedzi_Posortowani.Add(sasiedzi[ktory_sasiad.x]);
-                
+                if (sasiedzi[ktory_sasiad.x] != id)
+                {
+                    sasiedzi_Posortowani.Add(sasiedzi[ktory_sasiad.x]);
+                }                
             }
             ////////////////////////////////
 
