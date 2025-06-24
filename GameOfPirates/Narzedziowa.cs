@@ -143,8 +143,96 @@ namespace GameOfPirates
             return tablica2D;
         }
 
+        public static List<int> ZnajdzSasiadowLodki(Gra g, int m, int n, int id, int[,] h_template)
+        {
+            List<int> sasiedzi = new List<int>();
 
-        public static List<int> ZnajdzSasiadowLodki(Gra g, int m, int n, int id)
+            int index = -1;
+            int idx = -1;
+
+            foreach (Lodka lodka in g.Lodki)
+            {
+                idx++;
+                if (lodka.Identyfikator_Globalny == id)
+                {
+                    index = idx;
+                    break;
+                }
+            }
+
+            if (index == -1)
+                return sasiedzi;
+
+            int row = index / n;
+            int col = index % n;
+
+            // Przesunięcia w kolejności: LGR, G, PGR, L, P, LDR, D, PDR
+            int[] dRow = { -1, -1, -1, 0, 0, 0, 1, 1, 1 };
+            int[] dCol = { -1, 0, 1, -1,0, 1, -1, 0, 1 };
+
+            for (int i = 0; i < 9; i++)
+            {
+                int newRow = Mod(row + dRow[i], m);
+                int newCol = Mod(col + dCol[i], n);
+
+                int neighborIndex = newRow * n + newCol;
+
+                idx = -1;
+                foreach (Lodka l in g.Lodki)
+                {
+                    idx++;
+                    if (idx == neighborIndex)
+                    {
+                        sasiedzi.Add(l.Identyfikator_Globalny);
+                        break;
+                    }
+                }
+            }
+
+            /////////////////////////////////
+            int rows = h_template.GetLength(0);
+            int cols = h_template.GetLength(1);
+            int[] h_template_plaska = new int[rows * cols];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    h_template_plaska[i * cols + j] = h_template[i, j];
+                }
+            }
+
+
+            var kolejnosc = new List<(int val, int x)>();
+
+ 
+            for (int x = 0; x < 9; x++)
+            {
+                   kolejnosc.Add((h_template_plaska[x], x));
+            }
+
+            kolejnosc.Sort((a, b) => a.val.CompareTo(b.val));
+            List<int> sasiedzi_Posortowani = new List<int>();
+
+            foreach((int val,int x) ktory_sasiad in kolejnosc)
+            {
+                if(sasiedzi[ktory_sasiad.x]!=id)
+                sasiedzi_Posortowani.Add(sasiedzi[ktory_sasiad.x]);
+                
+            }
+            ////////////////////////////////
+
+
+            return sasiedzi_Posortowani;
+        }
+
+        private static int Mod(int x, int m)
+        {
+            return (x % m + m) % m;
+        }
+
+
+        /*public static List<int> ZnajdzSasiadowLodki(Gra g, int m, int n, int id)
         {
             List<int> sasiedzi=new List<int>();
             int index = -1;
@@ -188,7 +276,7 @@ namespace GameOfPirates
             }
 
             return sasiedzi;
-        }
+        }*/
         public static void debug_save_generated_random_numbers_to_file(IEnumerable doZapisu)
         {
             List<int> list = new List<int>();

@@ -111,7 +111,7 @@ namespace GameOfPirates
 
         }
 
-        public static void print3(Gra gra)
+        public static void print3(Gra gra,int n)
         {
             string sciezkaDoPliku = "debug.txt";
 
@@ -119,9 +119,15 @@ namespace GameOfPirates
             {
                 File.AppendAllText(sciezkaDoPliku, "Boats_glob_ID" + Environment.NewLine);
 
+                int i = 0;
                 foreach (Lodka lodka in gra.Lodki)
                 {
-                    File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny.ToString() + Environment.NewLine);
+                    File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny.ToString()+" ");
+                    if (i % n == (n - 1))
+                    {
+                        File.AppendAllText(sciezkaDoPliku,Environment.NewLine);
+                    }
+                    i++;
                 }
 
                 Console.WriteLine($"Profile łódek zostały dopisane do pliku: {sciezkaDoPliku}");
@@ -149,7 +155,7 @@ namespace GameOfPirates
 
                 foreach (Lodka lodka in gra.Lodki)
                 {
-                    File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny + Environment.NewLine);
+                    //File.AppendAllText(sciezkaDoPliku, lodka.Identyfikator_Globalny + Environment.NewLine);
                     string pom = "";
                     foreach(int sasiad in lodka.Sasiedzi)
                     {

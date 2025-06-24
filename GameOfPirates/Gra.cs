@@ -50,7 +50,7 @@ namespace GameOfPirates
             for (int i = 0; i < ilelodek; i++)
             {
                 Lodka lodka = new Lodka();
-                lodka.Identyfikator_Globalny = i;
+                lodka.Identyfikator_Globalny = i+1;
                 lodka.IdnetyfikatoryGlobalne(igp);
                 lodka.LosujHierarchie();
                 lodka.LosujProfil();
@@ -116,7 +116,8 @@ namespace GameOfPirates
                 for (int j = 0; j < n; j++)
                 {
                     Lodka lodka = new Lodka();
-                    lodka.Identyfikator_Globalny = licznikLodek++;
+                    lodka.Identyfikator_Globalny = licznikLodek; 
+                    licznikLodek = licznikLodek + 1;
                     lodka.Piraci = new ArrayList();
 
                     int[] profil = new int[Boats_profiles.GetLength(1)];
@@ -203,7 +204,7 @@ namespace GameOfPirates
                 for (int j = 0; j < n; j++)       
                 {
                     Lodka lodka = new Lodka();
-                    lodka.Identyfikator_Globalny = licznikLodek;
+                    lodka.Identyfikator_Globalny = licznikLodek; ;
 
                     int[] profil = new int[Boats_profiles.GetLength(1)];
                     for (int k = 0; k < profil.Length; k++)
@@ -304,9 +305,10 @@ namespace GameOfPirates
             j++;
             }
 
+
             foreach (Lodka l in this.Lodki)
             {
-                l.Sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny);
+                l.Sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny,H_template);
             }
             // CALCULATE Boats_neigb 
 
@@ -314,7 +316,7 @@ namespace GameOfPirates
             if (test2.Checked)
             {
                 
-                Print.print3(this);
+                Print.print3(this,N);
                 Print.print4(this);
             }
         }
