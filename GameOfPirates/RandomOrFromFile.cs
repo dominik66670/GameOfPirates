@@ -93,6 +93,8 @@ namespace GameOfPirates
             }
             
         }
+
+
         public List<List<int>> losoweWartosciLudek(int K)
         {
             List<List<int>> losoweWartosci = new List<List<int>>();
@@ -131,5 +133,7 @@ namespace GameOfPirates
             }
         }*/
     }
+
+
 
 }

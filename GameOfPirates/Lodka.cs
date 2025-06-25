@@ -32,7 +32,7 @@ namespace GameOfPirates
         }
         public void LosujHierarchie()
         {
-            int[] Hierarhie = Narzedziowa.generuj_zestaw_liczb_losowych();
+            int[] Hierarhie = Narzedziowa.generuj_zestaw_liczb_losowych(9);
             int i = 0;
             foreach (Pirat pirat in Piraci)
             {
@@ -44,12 +44,12 @@ namespace GameOfPirates
 
         public void LosujProfil()
         {
-            this.Profil = new int[3];
-            for (int i = 0; i < 3; i++)
-            {
-                int wylosowanaLiczba = RandomOrFromFile.Instance.Next(0, 2);
-                this.Profil[i] = wylosowanaLiczba;
-            }
+            this.Profil = Narzedziowa.generuj_zestaw_liczb_losowych(9);
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    int wylosowanaLiczba = RandomOrFromFile.Instance.Next(0, 2);
+            //    this.Profil[i] = wylosowanaLiczba;
+            //}
         }
         public void LiczPozycjeWSingleBoat(int[,] h_template)
         {
