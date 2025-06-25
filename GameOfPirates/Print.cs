@@ -76,7 +76,43 @@ namespace GameOfPirates
 
         }
 
-        public static void print2(Gra gra)
+         public static void print2(Gra gra)
+         {
+             Console.WriteLine("Boats_and_H");
+
+             string sciezkaDoPliku = "debug.txt";
+
+             try
+             {
+                 File.AppendAllText(sciezkaDoPliku, "Boats_and_H" + Environment.NewLine);
+                 int [,] Boats_and_H = gra.Boats_And_H();
+
+                     string bufor = "";
+
+                     //int[,] BoatAndH = lodka.SingleBoat();
+
+                     for (int i = 0; i < gra.Lodki.Count; i++)
+                     {
+                         for (int j = 0; j < 9; j++)
+                         {
+                             bufor = bufor + Boats_and_H[i, j] + " ";
+                         }
+                         bufor = bufor + Environment.NewLine;
+                     } 
+
+                     bufor = bufor + Environment.NewLine;
+                     File.AppendAllText(sciezkaDoPliku, bufor);
+
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+             }
+
+         }
+
+
+       /* public static void print2(Gra gra, int m, int n)
         {
             Console.WriteLine("Boats_and_H");
 
@@ -85,31 +121,36 @@ namespace GameOfPirates
             try
             {
                 File.AppendAllText(sciezkaDoPliku, "Boats_and_H" + Environment.NewLine);
-                int [,] Boats_and_H = gra.Boats_And_H();
+                int[,] Boats_and_H = gra.Boats_And_H();
 
-                    string bufor = "";
+                string bufor = "";
 
-                    //int[,] BoatAndH = lodka.SingleBoat();
-
-                    for (int i = 0; i < gra.Lodki.Count; i++)
+                for (int row = 0; row < m; row++) // wiersze łódek
+                {
+                    for (int subRow = 0; subRow < 3; subRow++) // wiersze wewnątrz łódki (0–2)
                     {
-                        for (int j = 0; j < 9; j++)
+                        for (int col = 0; col < n; col++) // kolumny łódek
                         {
-                            bufor = bufor + Boats_and_H[i, j] + " ";
+                            int index = row * n + col; // indeks łódki w 1D tablicy
+                            for (int subCol = 0; subCol < 3; subCol++) // kolumny wewnątrz łódki (0–2)
+                            {
+                                int pos = 3 * subRow + subCol;
+                                bufor += Boats_and_H[index, pos] + " ";
+                            }
                         }
-                        bufor = bufor + Environment.NewLine;
-                    } 
- 
-                    bufor = bufor + Environment.NewLine;
-                    File.AppendAllText(sciezkaDoPliku, bufor);
-                
+                        bufor += Environment.NewLine;
+                    }
+                }
+
+                bufor += Environment.NewLine;
+                File.AppendAllText(sciezkaDoPliku, bufor);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
             }
+        }*/
 
-        }
 
         public static void print3(Gra gra,int n)
         {
@@ -213,7 +254,31 @@ namespace GameOfPirates
             }
         }
 
-        public static void print12(Gra gra)
+        /* public static void print12(Gra gra)
+         {
+             string sciezkaDoPliku = "debug.txt";
+
+             try
+             {
+                 File.AppendAllText(sciezkaDoPliku, "Hier_in_boats" + Environment.NewLine);
+
+                 foreach (Lodka lodka in gra.Lodki)
+                 {
+                     string hierarchia = "";
+                     foreach (Pirat pirat in lodka.Piraci)
+                     {
+                         hierarchia = hierarchia + pirat.Hierarchia_w_lodce + ",";
+                     }
+                     File.AppendAllText(sciezkaDoPliku, hierarchia + Environment.NewLine);
+                 }
+             }
+             catch (Exception ex)
+             {
+                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
+             }
+         }*/
+
+        public static void print12(Gra gra, int m, int n)
         {
             string sciezkaDoPliku = "debug.txt";
 
@@ -221,21 +286,40 @@ namespace GameOfPirates
             {
                 File.AppendAllText(sciezkaDoPliku, "Hier_in_boats" + Environment.NewLine);
 
-                foreach (Lodka lodka in gra.Lodki)
+                string bufor = "";
+
+                for (int i = 0; i < m; i++) // wiersze łódek
                 {
-                    string hierarchia = "";
-                    foreach (Pirat pirat in lodka.Piraci)
+                    for (int wierszWew = 0; wierszWew < 3; wierszWew++) 
                     {
-                        hierarchia = hierarchia + pirat.Hierarchia_w_lodce + ",";
+                        for (int j = 0; j < n; j++) 
+                        {
+                            int indexLodki = i * n + j;
+                            Lodka lodka = (Lodka)gra.Lodki[indexLodki];
+
+                            for (int k = 0; k < lodka.Piraci.Count; k++)
+                            {
+                                if (k / 3 == wierszWew)
+                                {
+                                    Pirat pirat = (Pirat)lodka.Piraci[k];
+                                    bufor += pirat.Hierarchia_w_lodce + " ";
+                                }
+                            }
+                        }
+                        bufor += Environment.NewLine;
                     }
-                    File.AppendAllText(sciezkaDoPliku, hierarchia + Environment.NewLine);
                 }
+
+                bufor += Environment.NewLine;
+                File.AppendAllText(sciezkaDoPliku, bufor);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Wystąpił błąd podczas zapisu do pliku: {ex.Message}");
             }
         }
+
+
 
         public static void print13(Gra gra)
         {

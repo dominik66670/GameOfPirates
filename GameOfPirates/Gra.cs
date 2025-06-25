@@ -283,7 +283,7 @@ namespace GameOfPirates
                     }
 
                     Print.print11(this);
-                    Print.print12(this);
+                    Print.print12(this, M, N);
                     Print.print2(this);
                 }
             }
@@ -320,7 +320,7 @@ namespace GameOfPirates
             if (test2.Checked) 
             {
                 Print.print11(this);
-                Print.print12(this);
+                Print.print12(this, M, N);
                 Print.print2(this);
             }
 
