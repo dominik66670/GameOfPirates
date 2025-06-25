@@ -91,6 +91,7 @@ namespace GameOfPirates
             {
                 return _random.Next(min, max);
             }
+            
         }
         public List<List<int>> losoweWartosciLudek(int K)
         {

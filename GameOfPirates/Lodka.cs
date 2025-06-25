@@ -32,7 +32,7 @@ namespace GameOfPirates
         }
         public void LosujHierarchie()
         {
-            int[] Hierarhie = Narzedziowa.GenerujCyfryLosowe(9);
+            int[] Hierarhie = Narzedziowa.generuj_zestaw_liczb_losowych();
             int i = 0;
             foreach (Pirat pirat in Piraci)
             {

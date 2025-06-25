@@ -292,6 +292,22 @@ namespace GameOfPirates
                     outputFile.WriteLine(line);
             }
         }
+        public static int[] generuj_zestaw_liczb_losowych()
+        {
+            int[] liczbyLosowe = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            List<double> liczbyLosoweZPliku = new List<double>();
+            for (int j = 0; j < 9; j++)
+            {
+                liczbyLosoweZPliku.Add(RandomOrFromFile.Instance.NextDouble());
+            }
+            for (int j = 1; j <= 9; j++)
+            {
+                int min_index = liczbyLosoweZPliku.IndexOf(liczbyLosoweZPliku.Min());
+                liczbyLosoweZPliku[min_index] = 10.0;
+                liczbyLosowe[min_index] = j;
+            }
+            return liczbyLosowe;
+        }
 
     }
 }
