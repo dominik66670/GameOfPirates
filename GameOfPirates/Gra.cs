@@ -239,7 +239,7 @@ namespace GameOfPirates
         }
 
 
-        public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2)
+        public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2,bool czySeed, int seed)
         {
             All_boat_game_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2DFloat("DATA\\All_boat_game_profiles.txt");
             H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
@@ -266,6 +266,22 @@ namespace GameOfPirates
                 }
                 if (K==9 && M==3 && N == 3)
                 {
+                    RandomOrFromFile.Reset();
+                    RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true, 0, false); //Wszystkie korzystają z pliku RAND NUM
+
+                    int igp = 0;
+                    Lodki = new ArrayList();
+                    for (int i = 0; i < K; i++)
+                    {
+                        Lodka lodka = new Lodka();
+                        lodka.IdnetyfikatoryGlobalne(igp); // CALCULATE All_players_glob_ID 
+                        lodka.LosujHierarchie(); // CALCULATE Hier_in_boats
+                        lodka.LosujProfil();
+                        lodka.LiczPozycjeWSingleBoat(H_template);
+                        igp = igp + 9;
+                        Lodki.Add(lodka);
+                    }
+
                     Print.print11(this);
                     Print.print12(this);
                     Print.print2(this);
@@ -273,11 +289,18 @@ namespace GameOfPirates
             }
             else
             {
-                RandomOrFromFile.Reset();
-                RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true, 0, false);
-                //RandomOrFromFile.Instance.CzyZSeeda(0, false);
-                //RandomOrFromFile.Instance.CzyZpliku(true);
-                List<List<int>> wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
+                if (czySeed)
+                {
+                    RandomOrFromFile.Reset();
+                    RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, seed, true);
+                }
+
+                else {
+                    RandomOrFromFile.Reset();
+                    RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, 0, false);
+                }
+                
+                //List<List<int>> wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
                 //Narzedziowa.debug_save_generated_random_numbers_to_file(wartosci);
                 int igp = 0;
                 Lodki = new ArrayList();
