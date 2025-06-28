@@ -1945,6 +1945,7 @@
             button2.TabIndex = 41;
             button2.Text = "Start";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 

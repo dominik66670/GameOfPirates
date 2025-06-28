@@ -85,7 +85,7 @@ namespace GameOfPirates
 
             return tablica2D;
         }
-        public static float[,] ZaladujIntyZPlikuDoTablicy2DFloat(string sciezkaDoPliku)
+        public static float[,] ZaladujFloatZPlikuDoTablicy2D(string sciezkaDoPliku)
         {
             float[,] tablica2D = null;
 
@@ -141,6 +141,61 @@ namespace GameOfPirates
             }
 
             return tablica2D;
+        }
+        public static int[] CzytajTabliceIntZPliku(string sciezkaDoPliku)
+        {
+            int[] tablica = null;
+            try
+            {
+                if (File.Exists(sciezkaDoPliku))
+                {
+                    var wczytane_linie = File.ReadAllLines(sciezkaDoPliku)
+                                         .Where(linia => !string.IsNullOrWhiteSpace(linia));
+                    List<string> list = new List<string>();
+                    foreach (string l in wczytane_linie)
+                    {
+                        if (!l.StartsWith("#"))
+                        {
+                            list.Add(l);
+                        }
+                    }
+                    string[] linie = list.ToArray();
+                    if (linie.Length > 0)
+                    {
+                        int liczbaWierszy = linie.Length;
+                        int liczbaKolumn = 0;
+
+                        foreach (string linia in linie)
+                        {
+                            int kolumnyWiersza = linia.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+                            liczbaKolumn = Math.Max(liczbaKolumn, kolumnyWiersza);
+                        }
+
+                        tablica = new int[liczbaKolumn];
+
+                       
+                        string[] elementyWiersza = linie[0].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int j = 0; j < liczbaKolumn; j++)
+                        {
+                            if (j < elementyWiersza.Length && int.TryParse(elementyWiersza[j].Trim(), out int liczba))
+                            {
+                                tablica[j] = liczba;
+                            }
+                            else
+                            {
+                                tablica[j] = 0;
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return tablica;
         }
 
         public static List<int> ZnajdzSasiadowLodki(Gra g, int m, int n, int id, int[,] h_template)
