@@ -56,10 +56,14 @@ namespace GameOfPirates
 
         private void button_next_Click(object sender, EventArgs e)
         {
+            int test1 = RandomOrFromFile.Instance.Next(1, 100);
+            double test2 = RandomOrFromFile.Instance.NextDouble();
+
             if (radioButton_custom_seed.Checked)
             {
                 RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text), true);
             }
+
             Print.czyscPlik();
             int K = int.Parse(textbox_num_of_boats_k.Text);
             int N = int.Parse(textBox_num_of_cols_n.Text);
@@ -67,8 +71,21 @@ namespace GameOfPirates
             MessageBox.Show("Tryb niedebugowania", "Informacja");
             Gra = new Gra();
             //Gra.InicjujDane(int.Parse(textbox_num_of_boats_k.Text));
-            Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2);
+            //Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2);
 
+            if (radioButton_custom_seed.Checked)
+            {
+                RandomOrFromFile.Reset();
+                RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, Int32.Parse(textBox_custom_seed.Text), true);
+                Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2, true, int.Parse(textBox_custom_seed.Text));
+
+            }
+
+            else
+            {
+                Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2, false, int.Parse(textBox_custom_seed.Text));
+
+            }
 
         }
         private int[,] readBoatsProfile()

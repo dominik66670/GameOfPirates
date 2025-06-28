@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GameOfPirates
 {
@@ -23,6 +25,27 @@ namespace GameOfPirates
         public List<int>? final_round { get; set; }
 
 
+        public int[,] Boats_And_H()
+        {
+     
+            int[,] boats_And_H = new int[Lodki.Count, 9];
+
+            int[,] h_Template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
+
+
+            int i = 0;
+            foreach (Lodka lodka in Lodki)
+            {
+                int[] boat_And_H = lodka.Boat_And_H(h_Template);
+
+                for (int j = 0; j < 9; j++)
+                {
+                    boats_And_H[i, j] = boat_And_H[j];
+                }
+                i++;
+            }
+            return boats_And_H;
+        }
 
 
         public Gra()
@@ -36,7 +59,7 @@ namespace GameOfPirates
             for (int i = 0; i < ilelodek; i++)
             {
                 Lodka lodka = new Lodka();
-                lodka.Identyfikator_Globalny = i;
+                lodka.Identyfikator_Globalny = i+1;
                 lodka.IdnetyfikatoryGlobalne(igp);
                 lodka.LosujHierarchie();
                 lodka.LosujProfil();
@@ -91,6 +114,8 @@ namespace GameOfPirates
             int[,] All_players_glob_ID = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("Debug data\\Data set 1\\All_players_glob_ID-1boat.txt");
             int[,] Boats_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("Debug data\\Data set 1\\Boats_profiles-1boat.txt");
             int[,] Hier_in_boats = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("Debug data\\Data set 1\\Hier_in_boats-1boat.txt");
+            int[,] H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
+
 
             Lodki = new ArrayList();
             int licznikLodek = 0;
@@ -100,7 +125,8 @@ namespace GameOfPirates
                 for (int j = 0; j < n; j++)
                 {
                     Lodka lodka = new Lodka();
-                    lodka.Identyfikator_Globalny = licznikLodek++;
+                    lodka.Identyfikator_Globalny = licznikLodek; 
+                    licznikLodek = licznikLodek + 1;
                     lodka.Piraci = new ArrayList();
 
                     int[] profil = new int[Boats_profiles.GetLength(1)];
@@ -125,6 +151,7 @@ namespace GameOfPirates
                         }
                     }
 
+                    lodka.LiczPozycjeWSingleBoat(H_template);
                     Lodki.Add(lodka);
                 }
             }
@@ -176,7 +203,7 @@ namespace GameOfPirates
             int[,] All_players_glob_ID = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("Debug data\\Data set 2\\All_players_glob_ID-12boat.txt");
             int[,] Boats_profiles = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("Debug data\\Data set 2\\Boats_profiles-12boat.txt");
             int[,] Hier_in_boats = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("Debug data\\Data set 2\\Hier_in_boats-12boat.txt");
-
+            int[,] H_template = Narzedziowa.ZaladujIntyZPlikuDoTablicy2D("DATA\\H_template.txt");
 
             Lodki = new ArrayList();
             int licznikLodek = 0;
@@ -186,7 +213,7 @@ namespace GameOfPirates
                 for (int j = 0; j < n; j++)       
                 {
                     Lodka lodka = new Lodka();
-                    lodka.Identyfikator_Globalny = licznikLodek;
+                    lodka.Identyfikator_Globalny = licznikLodek; ;
 
                     int[] profil = new int[Boats_profiles.GetLength(1)];
                     for (int k = 0; k < profil.Length; k++)
@@ -211,6 +238,9 @@ namespace GameOfPirates
                         }
                     }
 
+                    
+                    lodka.LiczPozycjeWSingleBoat(H_template);
+
                     Lodki.Add(lodka);
                     licznikLodek++;
                 }
@@ -218,7 +248,7 @@ namespace GameOfPirates
         }
 
 
-        public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2)
+        public void DataInitialization1(int[,] selected_Boat_profiles, CheckBox debug, CheckBox test1, int K, int N, int M, CheckBox test2,bool czySeed, int seed)
         {
             
             All_boat_game_profiles = Narzedziowa.ZaladujFloatZPlikuDoTablicy2D("DATA\\All_boat_game_profiles.txt");
@@ -232,6 +262,9 @@ namespace GameOfPirates
             
             if (debug.Checked && test1.Checked)
             {
+                RandomOrFromFile.Reset();
+                RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true, 0, false); //Wszystkie korzystają z pliku RAND NUM
+
                 if (K==1 && M==1 && N==1) 
                 {
                     LadujDaneTest1(M,N);
@@ -248,16 +281,41 @@ namespace GameOfPirates
                 }
                 if (K==9 && M==3 && N == 3)
                 {
+                    RandomOrFromFile.Reset();
+                    RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", true, 0, false); //Wszystkie korzystają z pliku RAND NUM
+
+                    int igp = 0;
+                    Lodki = new ArrayList();
+                    for (int i = 0; i < K; i++)
+                    {
+                        Lodka lodka = new Lodka();
+                        lodka.IdnetyfikatoryGlobalne(igp); // CALCULATE All_players_glob_ID 
+                        lodka.LosujHierarchie(); // CALCULATE Hier_in_boats
+                        lodka.LosujProfil();
+                        lodka.LiczPozycjeWSingleBoat(H_template);
+                        igp = igp + 9;
+                        Lodki.Add(lodka);
+                    }
+
                     Print.print11(this);
-                    Print.print12(this);
+                    Print.print12(this, M, N);
                     Print.print2(this);
                 }
             }
             else
             {
-                RandomOrFromFile.Instance.CzyZSeeda(0, false);
-                RandomOrFromFile.Instance.CzyZpliku(true);
-                List<List<int>> wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
+                if (czySeed)
+                {
+                    RandomOrFromFile.Reset();
+                    RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, seed, true);
+                }
+
+                else {
+                    RandomOrFromFile.Reset();
+                    RandomOrFromFile.Init("Debug data\\RAND_NUM.txt", false, 0, false);
+                }
+                
+                //List<List<int>> wartosci = RandomOrFromFile.Instance.losoweWartosciLudek(K);
                 //Narzedziowa.debug_save_generated_random_numbers_to_file(wartosci);
                 int igp = 0;
                 Lodki = new ArrayList();
@@ -267,6 +325,7 @@ namespace GameOfPirates
                     lodka.IdnetyfikatoryGlobalne(igp); // CALCULATE All_players_glob_ID 
                     lodka.LosujHierarchie(); // CALCULATE Hier_in_boats
                     lodka.LosujProfil();
+                    lodka.LiczPozycjeWSingleBoat(H_template);
                     igp = igp + 9;
                     Lodki.Add(lodka);
                 }
@@ -276,7 +335,7 @@ namespace GameOfPirates
             if (test2.Checked) 
             {
                 Print.print11(this);
-                Print.print12(this);
+                Print.print12(this, M, N);
                 Print.print2(this);
             }
 
@@ -287,9 +346,10 @@ namespace GameOfPirates
             j++;
             }
 
+
             foreach (Lodka l in this.Lodki)
             {
-                l.Sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny);
+                l.Sasiedzi = Narzedziowa.ZnajdzSasiadowLodki(this,M,N,l.Identyfikator_Globalny,H_template);
             }
             // CALCULATE Boats_neigb 
 
@@ -297,7 +357,7 @@ namespace GameOfPirates
             if (test2.Checked)
             {
                 
-                Print.print3(this);
+                Print.print3(this,N);
                 Print.print4(this);
             }
         }

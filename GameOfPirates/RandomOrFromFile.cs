@@ -33,6 +33,12 @@ namespace GameOfPirates
             _instance = new RandomOrFromFile(filePath, zPliku, seed, czyZSeeda);
         }
 
+
+        public static void Reset()
+        {
+            _instance = null;
+        }
+
         // Private constructor — only accessible via Init
         private RandomOrFromFile(string filePath, bool zPliku, int seed,bool czyZSeeda)
         {
@@ -41,6 +47,7 @@ namespace GameOfPirates
                 .Select(line => double.Parse(line, CultureInfo.InvariantCulture))
                 .ToList();
             _zPliku = zPliku;
+
             if (czyZSeeda)
             {
                 _random = new Random(seed);
@@ -67,6 +74,7 @@ namespace GameOfPirates
             else
             {
                 return _random.NextDouble();
+
             }
         }
 
@@ -83,7 +91,10 @@ namespace GameOfPirates
             {
                 return _random.Next(min, max);
             }
+            
         }
+
+
         public List<List<int>> losoweWartosciLudek(int K)
         {
             List<List<int>> losoweWartosci = new List<List<int>>();
@@ -106,7 +117,7 @@ namespace GameOfPirates
             return losoweWartosci;
         }
 
-        public void CzyZpliku(bool zPliku)
+        /*public void CzyZpliku(bool zPliku)
         {
             _zPliku = zPliku;
         }
@@ -120,7 +131,9 @@ namespace GameOfPirates
             else { 
                 _random= new Random(); 
             }
-        }
+        }*/
     }
+
+
 
 }

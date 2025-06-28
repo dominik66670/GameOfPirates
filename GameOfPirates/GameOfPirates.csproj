@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DATA\H_template.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Debug data\Data set 1\All_players_glob_ID-1boat.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

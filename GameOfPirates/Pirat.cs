@@ -10,5 +10,6 @@ namespace GameOfPirates
     {
         public int Identyfikator_globalny { get; set; }
         public int Hierarchia_w_lodce { get; set; }
+        public int Pozycja_w_single_boat { get; set; }
     }
 }

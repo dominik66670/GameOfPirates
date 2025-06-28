@@ -769,6 +769,7 @@
             textBox_custom_seed.Name = "textBox_custom_seed";
             textBox_custom_seed.Size = new Size(100, 23);
             textBox_custom_seed.TabIndex = 2;
+            textBox_custom_seed.Text = "207883656";
             textBox_custom_seed.TextAlign = HorizontalAlignment.Center;
             // 
             // radioButton_custom_seed
