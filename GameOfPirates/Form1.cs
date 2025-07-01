@@ -61,7 +61,7 @@ namespace GameOfPirates
 
             if (radioButton_custom_seed.Checked)
             {
-                RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text), true);
+               // RandomOrFromFile.Instance.CzyZSeeda(Int32.Parse(textBox_custom_seed.Text), true);
             }
 
             Print.czyscPlik();
@@ -112,7 +112,7 @@ namespace GameOfPirates
             int M = int.Parse(textBox_num_of_rows_m.Text);
             MessageBox.Show("Tryb niedebugowania", "Informacja");
             Gra = new Gra();
-            Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2);
+            Gra.DataInitialization1(readBoatsProfile(), checkBox_debug_mode, checkBox_test_1, K, N, M, checkBox_test_2, radioButton_custom_seed.Checked, Int32.Parse(textBox_custom_seed.Text));
             Gra.Play10(readBoatsProfile(),1);
         }
     }

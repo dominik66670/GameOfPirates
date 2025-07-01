@@ -117,7 +117,7 @@ namespace GameOfPirates
             return losoweWartosci;
         }
 
-        /*public void CzyZpliku(bool zPliku)
+        public void CzyZpliku(bool zPliku)
         {
             _zPliku = zPliku;
         }
@@ -131,7 +131,7 @@ namespace GameOfPirates
             else { 
                 _random= new Random(); 
             }
-        }*/
+        }
     }
 
 
